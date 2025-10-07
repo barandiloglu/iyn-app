@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Instagram, Facebook, Linkedin } from "lucide-react";
+import Image from "next/image";
 import { useLanguage } from "@/contexts/language-context";
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const homeUrl = `/${language}`;
   const footerSections = [
     {
       title: t("footer.courses"),
@@ -42,12 +43,6 @@ export default function Footer() {
     }
   ];
 
-  const socialIcons = {
-    Instagram: <Instagram size={20} />,
-    Facebook: <Facebook size={20} />,
-    Linkedin: <Linkedin size={20} />
-  };
-
   return (
     <motion.footer 
       className="bg-primary text-white"
@@ -57,23 +52,26 @@ export default function Footer() {
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 items-start">
           {/* Logo and Company Info */}
           <motion.div 
-            className="md:col-span-1"
+            className="md:col-span-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <span className="text-primary font-bold text-sm">IYN</span>
-              </div>
-              <span className="font-header font-bold text-lg">
-                IYN EDUCATION & CONSULTANCY
-              </span>
-            </div>
+            <a href={homeUrl} className="flex items-center space-x-3 mb-4" aria-label="IYN Education & Consultancy Home">
+              <Image
+                src="/logo-white.png"
+                alt="IYN Education & Consultancy logo"
+                width={360}
+                height={90}
+                className="w-64 md:w-80 h-auto"
+                quality={100}
+                sizes="(min-width: 1024px) 20rem, 16rem"
+              />
+            </a>
             <p className="text-white/80 text-sm leading-relaxed">
               Kişiye özel eğitim modelleri ile başarının formülünü birlikte keşfedelim.
             </p>
@@ -130,11 +128,10 @@ export default function Footer() {
             {/* Map */}
             <motion.div
               className="w-full h-64 lg:h-80 bg-white/10 rounded-lg overflow-hidden"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
             >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3125.538222946411!2d27.1344184759145!3d38.42903527182786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd94ceb443941%3A0x4691bc041a2b8c49!2zxLBZTg!5e0!3m2!1sen!2sca!4v1759805787268!5m2!1sen!2sca"

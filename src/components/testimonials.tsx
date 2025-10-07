@@ -96,7 +96,7 @@ export default function Testimonials() {
                     ease: "easeOut"
                   }}
                 >
-                  "
+                  &quot;
                 </motion.div>
 
                 {/* Content */}

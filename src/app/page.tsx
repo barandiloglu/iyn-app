@@ -1,19 +1,6 @@
-import HeroSection from "@/components/hero-section";
-import EducationCards from "@/components/education-cards";
-import OnlineEducation from "@/components/online-education";
-import WhyIYN from "@/components/why-iyn";
-import ExamPreparation from "@/components/exam-preparation";
-import Testimonials from "@/components/testimonials";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <>
-      <HeroSection />
-      <EducationCards />
-      <OnlineEducation />
-      <WhyIYN />
-      <ExamPreparation />
-      <Testimonials />
-    </>
-  );
+export default function RootPage() {
+  // Check for saved language preference or default to Turkish
+  redirect("/tr");
 }

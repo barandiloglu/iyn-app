@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe, User, ChevronDown } from "lucide-react";
+import { Menu, X, User, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 import ReactCountryFlag from "react-country-flag";
 
@@ -11,6 +12,7 @@ export default function Header() {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const languageDropdownRef = useRef<HTMLDivElement>(null);
+  const homeUrl = `/${language}`;
 
   // Close language dropdown when clicking outside
   useEffect(() => {
@@ -43,28 +45,30 @@ export default function Header() {
 
   return (
     <motion.header 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className="bg-white shadow-sm sticky top-0 z-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <motion.div 
-            className="flex items-center space-x-2"
+          <motion.a 
+            href={homeUrl}
+            className="flex items-center space-x-3"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
+            aria-label="IYN Education & Consultancy Home"
           >
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary-light rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">IYN</span>
-              </div>
-              <span className="font-header font-bold text-neutral text-lg">
-                IYN EDUCATION & CONSULTANCY
-              </span>
-            </div>
-          </motion.div>
+            <Image
+              src="/logo.png"
+              alt="IYN Education & Consultancy logo"
+              width={280}
+              height={70}
+              className="w-40 md:w-56 h-auto"
+              priority
+            />
+          </motion.a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">

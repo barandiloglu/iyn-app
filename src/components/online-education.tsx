@@ -32,7 +32,7 @@ export default function OnlineEducation() {
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                IYN'de Eğitim Çok Kolay
+                IYN&apos;de Eğitim Çok Kolay
               </motion.span>
             </motion.h2>
 

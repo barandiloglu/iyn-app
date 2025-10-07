@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 type Language = "tr" | "en";
 
@@ -166,23 +167,31 @@ const translations = {
 
 interface LanguageProviderProps {
   children: ReactNode;
+  initialLanguage?: Language;
 }
 
-export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguage] = useState<Language>("tr");
+export function LanguageProvider({ children, initialLanguage = "tr" }: LanguageProviderProps) {
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
+  const router = useRouter();
+  const pathname = usePathname();
 
-  // Load language from localStorage on mount
+  // Sync language state with URL parameter on mount
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("iyn-language") as Language;
-    if (savedLanguage && (savedLanguage === "tr" || savedLanguage === "en")) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
+    setLanguageState(initialLanguage);
+  }, [initialLanguage]);
 
-  // Save language to localStorage when changed
+  // Handle language change with navigation
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
+    // Save preference but don't update state yet - let the new page load with correct language
     localStorage.setItem("iyn-language", lang);
+    
+    // Navigate to the new language route
+    // Extract the path after the language segment
+    const pathSegments = pathname?.split('/').filter(Boolean) || [];
+    const currentPath = pathSegments.slice(1).join('/');
+    const newPath = currentPath ? `/${lang}/${currentPath}` : `/${lang}`;
+    
+    router.push(newPath);
   };
 
   // Translation function
