@@ -7,10 +7,10 @@ import { useLanguage } from "@/contexts/language-context";
 export default function HeroSection() {
   const { t } = useLanguage();
   return (
-    <section className="relative bg-white overflow-hidden">
+    <section className="relative bg-white overflow-hidden min-w-0">
       {/* Background decorative shapes */}
       <motion.div
-        className="absolute left-0 top-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl"
+        className="absolute -left-32 top-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl"
         animate={{
           x: [0, 30, 0],
           y: [0, -20, 0],
@@ -24,7 +24,7 @@ export default function HeroSection() {
       />
       
       <motion.div
-        className="absolute right-0 top-32 w-80 h-80 bg-primary/10 rounded-full blur-3xl"
+        className="absolute -right-32 top-32 w-80 h-80 bg-primary/10 rounded-full blur-3xl"
         animate={{
           x: [0, -20, 0],
           y: [0, 30, 0],
@@ -90,7 +90,7 @@ export default function HeroSection() {
 
           {/* Floating elements */}
           <motion.div
-            className="absolute top-1/4 left-10 w-4 h-4 bg-accent rounded-full opacity-60"
+            className="absolute top-1/4 left-4 md:left-10 w-4 h-4 bg-accent rounded-full opacity-60"
             animate={{
               y: [0, -20, 0],
               opacity: [0.6, 1, 0.6],
@@ -103,7 +103,7 @@ export default function HeroSection() {
           />
           
           <motion.div
-            className="absolute top-1/3 right-16 w-6 h-6 bg-primary rounded-full opacity-40"
+            className="absolute top-1/3 right-4 md:right-16 w-6 h-6 bg-primary rounded-full opacity-40"
             animate={{
               y: [0, 15, 0],
               opacity: [0.4, 0.8, 0.4],
