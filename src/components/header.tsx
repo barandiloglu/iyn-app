@@ -29,11 +29,11 @@ export default function Header() {
   }, []);
 
   const navigationItems = [
-    { key: "nav.about", href: "#about" },
-    { key: "nav.courses", href: "#courses" },
-    { key: "nav.exams", href: "#exams" },
-    { key: "nav.overseas", href: "#overseas" },
-    { key: "nav.blog", href: "#blog" }
+    { key: "nav.about", href: `/${language}/about` },
+    { key: "nav.courses", href: `/${language}/courses` },
+    { key: "nav.exams", href: `/${language}/exams` },
+    { key: "nav.overseas", href: `/${language}/overseas` },
+    { key: "nav.blog", href: `/${language}/blog` }
   ];
 
   const languages = [
