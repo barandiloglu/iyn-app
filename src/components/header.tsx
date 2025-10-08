@@ -75,7 +75,7 @@ export default function Header() {
               alt="IYN Education & Consultancy logo"
               width={280}
               height={70}
-              className="w-40 md:w-56 h-auto"
+              className="w-64 md:w-64 lg:w-72 h-auto"
               priority
             />
           </motion.a>
