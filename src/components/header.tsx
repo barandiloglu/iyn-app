@@ -104,14 +104,19 @@ export default function Header() {
 
           {/* Right side actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <motion.button
-              className="flex items-center space-x-2 text-neutral hover:text-primary transition-colors duration-200"
+            <motion.a
+              href={`/${language}/login`}
+              className={`flex items-center space-x-2 transition-colors duration-200 ${
+                isActive(`/${language}/login`)
+                  ? "text-primary font-bold"
+                  : "text-neutral hover:text-primary"
+              }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <User size={20} />
               <span>{t("nav.login")}</span>
-            </motion.button>
+            </motion.a>
             
             {/* Language Selector */}
             <div className="relative" ref={languageDropdownRef}>
@@ -267,15 +272,21 @@ export default function Header() {
               </div>
             </motion.div>
 
-            <motion.button
-              className="flex items-center space-x-2 text-neutral font-medium hover:text-primary transition-colors duration-200 w-full"
+            <motion.a
+              href={`/${language}/login`}
+              className={`flex items-center space-x-2 font-medium transition-colors duration-200 w-full ${
+                isActive(`/${language}/login`)
+                  ? "text-primary font-bold"
+                  : "text-neutral hover:text-primary"
+              }`}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
               transition={{ delay: (navigationItems.length + 1) * 0.1, duration: 0.3 }}
+              onClick={() => setIsMenuOpen(false)}
             >
               <User size={20} />
               <span>{t("nav.login")}</span>
-            </motion.button>
+            </motion.a>
           </nav>
         </motion.div>
       </div>
