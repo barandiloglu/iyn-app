@@ -11,34 +11,38 @@ export default function HeroSection() {
   
   return (
     <section className="relative bg-white overflow-hidden min-w-0">
-      {/* Background decorative shapes */}
-      <motion.div
-        className="absolute -left-32 top-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl"
-        animate={isDesktop ? {
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-          scale: [1, 1.1, 1],
-        } : {}}
-        transition={{
-          duration: 8,
-          repeat: isDesktop ? Infinity : 0,
-          ease: "easeInOut",
-        }}
-      />
-      
-      <motion.div
-        className="absolute -right-32 top-32 w-80 h-80 bg-primary/10 rounded-full blur-3xl"
-        animate={isDesktop ? {
-          x: [0, -20, 0],
-          y: [0, 30, 0],
-          scale: [1, 0.9, 1],
-        } : {}}
-        transition={{
-          duration: 10,
-          repeat: isDesktop ? Infinity : 0,
-          ease: "easeInOut",
-        }}
-      />
+      {/* Background decorative shapes - Desktop only for performance */}
+      {isDesktop && (
+        <>
+          <motion.div
+            className="absolute -left-32 top-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl"
+            animate={{
+              x: [0, 30, 0],
+              y: [0, -20, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          
+          <motion.div
+            className="absolute -right-32 top-32 w-80 h-80 bg-primary/10 rounded-full blur-3xl"
+            animate={{
+              x: [0, -20, 0],
+              y: [0, 30, 0],
+              scale: [1, 0.9, 1],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </>
+      )}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div className="text-center">
@@ -91,48 +95,52 @@ export default function HeroSection() {
             </motion.div>
           </motion.button>
 
-          {/* Floating elements */}
-          <motion.div
-            className="absolute top-1/4 left-4 md:left-10 w-4 h-4 bg-accent rounded-full opacity-60"
-            animate={isDesktop ? {
-              y: [0, -20, 0],
-              opacity: [0.6, 1, 0.6],
-            } : {}}
-            transition={{
-              duration: 3,
-              repeat: isDesktop ? Infinity : 0,
-              ease: "easeInOut",
-            }}
-          />
-          
-          <motion.div
-            className="absolute top-1/3 right-4 md:right-16 w-6 h-6 bg-primary rounded-full opacity-40"
-            animate={isDesktop ? {
-              y: [0, 15, 0],
-              opacity: [0.4, 0.8, 0.4],
-            } : {}}
-            transition={{
-              duration: 4,
-              repeat: isDesktop ? Infinity : 0,
-              ease: "easeInOut",
-              delay: 1,
-            }}
-          />
-          
-          <motion.div
-            className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-accent rounded-full opacity-50"
-            animate={isDesktop ? {
-              y: [0, -10, 0],
-              x: [0, 10, 0],
-              opacity: [0.5, 1, 0.5],
-            } : {}}
-            transition={{
-              duration: 5,
-              repeat: isDesktop ? Infinity : 0,
-              ease: "easeInOut",
-              delay: 2,
-            }}
-          />
+          {/* Floating elements - Desktop only for performance */}
+          {isDesktop && (
+            <>
+              <motion.div
+                className="absolute top-1/4 left-4 md:left-10 w-4 h-4 bg-accent rounded-full opacity-60"
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.6, 1, 0.6],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              
+              <motion.div
+                className="absolute top-1/3 right-4 md:right-16 w-6 h-6 bg-primary rounded-full opacity-40"
+                animate={{
+                  y: [0, 15, 0],
+                  opacity: [0.4, 0.8, 0.4],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+              />
+              
+              <motion.div
+                className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-accent rounded-full opacity-50"
+                animate={{
+                  y: [0, -10, 0],
+                  x: [0, 10, 0],
+                  opacity: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2,
+                }}
+              />
+            </>
+          )}
         </div>
       </div>
 
