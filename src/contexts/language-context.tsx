@@ -20,7 +20,7 @@ const translations = {
     "nav.about": "Hakkımızda",
     "nav.courses": "Kurslar",
     "nav.exams": "Sınavlar",
-    "nav.overseas": "Yurtdışı Eğitim",
+    "nav.overseas": "Uluslararası Eğitim",
     "nav.blog": "Blog",
     "nav.login": "Giriş Yap",
     
@@ -311,7 +311,7 @@ const translations = {
     "nav.about": "About Us",
     "nav.courses": "Courses",
     "nav.exams": "Exams",
-    "nav.overseas": "Overseas Education",
+    "nav.overseas": "International Education",
     "nav.blog": "Blog",
     "nav.login": "Login",
     
