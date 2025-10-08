@@ -106,21 +106,19 @@ export default function OnlineEducation() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {/* Background decorative shape - Desktop only for performance */}
-            {isDesktop && (
-              <motion.div
-                className="absolute -top-10 -right-10 w-80 h-80 bg-accent/20 rounded-full blur-3xl"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            )}
+            {/* Background decorative shape */}
+            <motion.div
+              className="absolute -top-10 -right-10 w-80 h-80 bg-accent/20 rounded-full blur-3xl"
+              animate={isDesktop ? {
+                scale: [1, 1.1, 1],
+                rotate: [0, 5, 0],
+              } : {}}
+              transition={{
+                duration: 8,
+                repeat: isDesktop ? Infinity : 0,
+                ease: "easeInOut",
+              }}
+            />
 
             {/* Main image placeholder */}
             <motion.div 

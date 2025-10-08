@@ -33,21 +33,19 @@ export default function WhyIYN() {
 
   return (
     <section className="py-20 bg-neutral-light/30 relative overflow-hidden" ref={ref}>
-      {/* Background decorative shape - Desktop only for performance */}
-      {isDesktop && (
-        <motion.div
-          className="absolute -left-32 top-1/2 transform -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      )}
+      {/* Background decorative shape */}
+      <motion.div
+        className="absolute -left-32 top-1/2 transform -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+        animate={isDesktop ? {
+          scale: [1, 1.2, 1],
+          rotate: [0, 180, 360],
+        } : {}}
+        transition={{
+          duration: 20,
+          repeat: isDesktop ? Infinity : 0,
+          ease: "linear",
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Title */}

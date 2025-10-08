@@ -10,38 +10,34 @@ export default function BlogHero() {
 
   return (
     <section key={`blog-hero-${language}`} className="relative bg-gradient-to-b from-[#0349AA] to-[#0091FF] text-white overflow-hidden">
-      {/* Background decorative shapes - Desktop only for performance */}
-      {isDesktop && (
-        <>
-          <motion.div
-            className="absolute -left-32 top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"
-            animate={{
-              x: [0, 30, 0],
-              y: [0, -20, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          
-          <motion.div
-            className="absolute -right-32 top-32 w-80 h-80 bg-white/5 rounded-full blur-3xl"
-            animate={{
-              x: [0, -20, 0],
-              y: [0, 30, 0],
-              scale: [1, 0.9, 1],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        </>
-      )}
+      {/* Background decorative shapes */}
+      <motion.div
+        className="absolute -left-32 top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"
+        animate={isDesktop ? {
+          x: [0, 30, 0],
+          y: [0, -20, 0],
+          scale: [1, 1.1, 1],
+        } : {}}
+        transition={{
+          duration: 8,
+          repeat: isDesktop ? Infinity : 0,
+          ease: "easeInOut",
+        }}
+      />
+      
+      <motion.div
+        className="absolute -right-32 top-32 w-80 h-80 bg-white/5 rounded-full blur-3xl"
+        animate={isDesktop ? {
+          x: [0, -20, 0],
+          y: [0, 30, 0],
+          scale: [1, 0.9, 1],
+        } : {}}
+        transition={{
+          duration: 10,
+          repeat: isDesktop ? Infinity : 0,
+          ease: "easeInOut",
+        }}
+      />
 
       <div className="relative container mx-auto px-4 py-20 lg:py-32">
         <div className="text-center">
@@ -64,52 +60,48 @@ export default function BlogHero() {
           </motion.p>
         </div>
 
-        {/* Floating elements - Desktop only for performance */}
-        {isDesktop && (
-          <>
-            <motion.div
-              className="absolute top-1/4 left-4 md:left-10 w-4 h-4 bg-white/30 rounded-full"
-              animate={{
-                y: [0, -20, 0],
-                opacity: [0.3, 0.6, 0.3],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            
-            <motion.div
-              className="absolute top-1/3 right-4 md:right-16 w-6 h-6 bg-white/20 rounded-full"
-              animate={{
-                y: [0, 15, 0],
-                opacity: [0.2, 0.4, 0.2],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1,
-              }}
-            />
-            
-            <motion.div
-              className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-white/40 rounded-full"
-              animate={{
-                y: [0, -10, 0],
-                x: [0, 10, 0],
-                opacity: [0.4, 0.8, 0.4],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2,
-              }}
-            />
-          </>
-        )}
+        {/* Floating elements */}
+        <motion.div
+          className="absolute top-1/4 left-4 md:left-10 w-4 h-4 bg-white/30 rounded-full"
+          animate={isDesktop ? {
+            y: [0, -20, 0],
+            opacity: [0.3, 0.6, 0.3],
+          } : {}}
+          transition={{
+            duration: 3,
+            repeat: isDesktop ? Infinity : 0,
+            ease: "easeInOut",
+          }}
+        />
+        
+        <motion.div
+          className="absolute top-1/3 right-4 md:right-16 w-6 h-6 bg-white/20 rounded-full"
+          animate={isDesktop ? {
+            y: [0, 15, 0],
+            opacity: [0.2, 0.4, 0.2],
+          } : {}}
+          transition={{
+            duration: 4,
+            repeat: isDesktop ? Infinity : 0,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-white/40 rounded-full"
+          animate={isDesktop ? {
+            y: [0, -10, 0],
+            x: [0, 10, 0],
+            opacity: [0.4, 0.8, 0.4],
+          } : {}}
+          transition={{
+            duration: 5,
+            repeat: isDesktop ? Infinity : 0,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
       </div>
 
       {/* Bottom wave decoration */}
