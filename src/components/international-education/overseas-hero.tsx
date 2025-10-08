@@ -3,19 +3,19 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/language-context";
-import { useMobile } from "@/hooks/use-mobile";
+import { useIsDesktop } from "@/hooks/use-media-query";
 
 export default function OverseasHero() {
   const { t, language } = useLanguage();
-  const isMobile = useMobile();
+  const isDesktop = useIsDesktop();
 
   return (
     <section key={`overseas-hero-${language}`} className="relative bg-gradient-to-b from-[#ec8d13] to-[#d17a0f] text-white overflow-hidden">
-      {/* Background decorative shapes - disabled on mobile for performance */}
-      {!isMobile && (
+      {/* Background decorative shapes - Desktop only for performance */}
+      {isDesktop && (
         <>
           <motion.div
-            className="absolute -left-32 top-20 w-64 h-64 bg-white/10 rounded-full blur-xl"
+            className="absolute -left-32 top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"
             animate={{
               x: [0, 30, 0],
               y: [0, -20, 0],
@@ -29,7 +29,7 @@ export default function OverseasHero() {
           />
           
           <motion.div
-            className="absolute -right-32 top-32 w-80 h-80 bg-white/5 rounded-full blur-xl"
+            className="absolute -right-32 top-32 w-80 h-80 bg-white/5 rounded-full blur-3xl"
             animate={{
               x: [0, -20, 0],
               y: [0, 30, 0],
@@ -50,8 +50,7 @@ export default function OverseasHero() {
             className="text-4xl md:text-6xl lg:text-7xl font-bold font-oswald uppercase leading-tight mb-8"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: isMobile ? 0.4 : 0.8, ease: "easeOut" }}
-            style={{ willChange: "transform, opacity" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             {t("overseas.hero.title")}
           </motion.h1>
@@ -60,15 +59,14 @@ export default function OverseasHero() {
             className="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed max-w-4xl mx-auto mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.1 : 0.2, ease: "easeOut" }}
-            style={{ willChange: "transform, opacity" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
             {t("overseas.hero.subtitle")}
           </motion.p>
         </div>
 
-        {/* Floating elements - disabled on mobile for performance */}
-        {!isMobile && (
+        {/* Floating elements - Desktop only for performance */}
+        {isDesktop && (
           <>
             <motion.div
               className="absolute top-1/4 left-4 md:left-10 w-4 h-4 bg-white/30 rounded-full"
