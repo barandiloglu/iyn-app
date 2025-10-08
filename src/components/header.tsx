@@ -5,12 +5,14 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, User, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
+import { usePathname } from "next/navigation";
 import ReactCountryFlag from "react-country-flag";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const pathname = usePathname();
   const languageDropdownRef = useRef<HTMLDivElement>(null);
   const homeUrl = `/${language}`;
 
@@ -27,6 +29,14 @@ export default function Header() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // Function to check if a navigation item is active
+  const isActive = (href: string) => {
+    if (href === `/${language}`) {
+      return pathname === href;
+    }
+    return pathname.startsWith(href);
+  };
 
   const navigationItems = [
     { key: "nav.about", href: `/${language}/about` },
@@ -76,7 +86,11 @@ export default function Header() {
               <motion.a
                 key={item.key}
                 href={item.href}
-                className="text-neutral font-medium hover:text-primary transition-colors duration-200"
+                className={`transition-colors duration-200 ${
+                  isActive(item.href)
+                    ? "text-primary font-bold"
+                    : "text-neutral font-medium hover:text-primary"
+                }`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.3 }}
@@ -201,7 +215,11 @@ export default function Header() {
               <motion.a
                 key={item.key}
                 href={item.href}
-                className="block text-neutral font-medium hover:text-primary transition-colors duration-200"
+                className={`block transition-colors duration-200 ${
+                  isActive(item.href)
+                    ? "text-primary font-bold"
+                    : "text-neutral font-medium hover:text-primary"
+                }`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
                 transition={{ delay: index * 0.1, duration: 0.3 }}
