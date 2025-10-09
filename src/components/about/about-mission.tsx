@@ -124,7 +124,7 @@ export default function AboutMission() {
               viewport={{ once: true }}
             >
               <Image
-                src="/about1.png"
+                src="/images/about/teamPhoto.png"
                 alt="IYN Education Team"
                 width={600}
                 height={400}

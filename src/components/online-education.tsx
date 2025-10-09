@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { useIsDesktop } from "@/hooks/use-media-query";
 
 export default function OnlineEducation() {
@@ -122,14 +123,14 @@ export default function OnlineEducation() {
               />
             )}
 
-            {/* Main image placeholder */}
+            {/* Main image */}
             <motion.div 
-              className="relative z-10 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-12 h-96 flex items-center justify-center"
+              className="relative z-10 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-8 h-96 flex items-center justify-center overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <motion.div
-                className="w-48 h-48 bg-white/20 rounded-full flex items-center justify-center"
+                className="relative w-80 h-80 flex items-center justify-center"
                 animate={{
                   y: [0, -10, 0],
                 }}
@@ -139,7 +140,50 @@ export default function OnlineEducation() {
                   ease: "easeInOut",
                 }}
               >
-                <span className="text-6xl">🎓</span>
+                {/* Modern photo frame with shadow and border */}
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/student.jpg"
+                    alt="Student"
+                    width={320}
+                    height={320}
+                    className="w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white/30"
+                  />
+                  
+                  {/* Modern overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent rounded-2xl"></div>
+                  
+                  {/* Subtle inner glow effect */}
+                  <div className="absolute inset-2 bg-gradient-to-br from-white/20 to-transparent rounded-xl pointer-events-none"></div>
+                </div>
+                
+                {/* Modern floating accent elements */}
+                <motion.div
+                  className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-[#ec8d13] to-[#d17a0f] rounded-full shadow-lg"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 180, 360],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                
+                <motion.div
+                  className="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-br from-[#0349AA] to-[#0091FF] rounded-full shadow-lg"
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    rotate: [360, 180, 0],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1,
+                  }}
+                />
               </motion.div>
             </motion.div>
 
