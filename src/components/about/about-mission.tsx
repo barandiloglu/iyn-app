@@ -122,14 +122,23 @@ export default function AboutMission() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               viewport={{ once: true }}
+              className="relative"
             >
-              <Image
-                src="/images/about/teamPhoto.png"
-                alt="IYN Education Team"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-md"
-              />
+              {/* Clean, simple photo design */}
+              <div className="relative">
+                <Image
+                  src="/images/about/teamPhoto.png"
+                  alt="IYN Education Team"
+                  width={600}
+                  height={400}
+                  className="rounded-lg shadow-lg"
+                />
+                
+                {/* Simple accent elements - matching the reference design */}
+                <div className="absolute top-8 right-8 w-3 h-3 bg-[#ec8d13] rounded-full"></div>
+                <div className="absolute bottom-4 left-4 w-3 h-3 bg-[#0349AA] rounded-full"></div>
+                <div className="absolute bottom-4 right-4 w-16 h-1 bg-[#ec8d13] rounded-full"></div>
+              </div>
             </motion.div>
             <motion.div 
               className="space-y-6"
