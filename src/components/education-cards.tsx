@@ -50,14 +50,12 @@ export default function EducationCards() {
               }}
             >
               {/* Image Section */}
-              <motion.div 
-                className="relative h-64 overflow-hidden"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="relative h-64 overflow-hidden gpu-accelerate-opacity"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4 }}
               >
                 <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <motion.div
-                    className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center"
+                  <motion.div style={{ willChange: 'transform, opacity' }} className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center gpu-accelerate-opacity"
                     animate={{
                       rotate: [0, 360],
                     }}
@@ -72,21 +70,18 @@ export default function EducationCards() {
                 </div>
                 
                 {/* Overlay gradient */}
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                <motion.div style={{ willChange: 'transform' }} className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 gpu-accelerate"
                 />
               </motion.div>
 
               {/* Content Section */}
-              <motion.div 
-                className="p-6 bg-gradient-to-r from-primary to-primary-light text-white relative"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="p-6 bg-gradient-to-r from-primary to-primary-light text-white relative gpu-accelerate-opacity"
                 whileHover={{ 
                   background: "linear-gradient(135deg, #0091FF 0%, #0349AA 100%)",
                   transition: { duration: 0.3 }
                 }}
               >
-                <motion.h3 
-                  className="font-header font-bold text-lg mb-4 leading-tight"
+                <motion.h3 style={{ willChange: 'transform, opacity' }} className="font-header font-bold text-lg mb-4 leading-tight gpu-accelerate-opacity"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: index * 0.2 + 0.3, duration: 0.6 }}
@@ -94,8 +89,7 @@ export default function EducationCards() {
                   {card.title}
                 </motion.h3>
                 
-                <motion.p 
-                  className="text-white/90 text-sm leading-relaxed"
+                <motion.p style={{ willChange: 'transform, opacity' }} className="text-white/90 text-sm leading-relaxed gpu-accelerate-opacity"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: index * 0.2 + 0.4, duration: 0.6 }}
@@ -104,8 +98,7 @@ export default function EducationCards() {
                 </motion.p>
 
                 {/* Decorative elements */}
-                <motion.div
-                  className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full"
+                <motion.div style={{ willChange: 'transform, opacity' }} className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full gpu-accelerate-opacity"
                   animate={{
                     scale: [1, 1.2, 1],
                     opacity: [0.3, 0.6, 0.3],
@@ -117,8 +110,7 @@ export default function EducationCards() {
                   }}
                 />
                 
-                <motion.div
-                  className="absolute bottom-4 left-4 w-4 h-4 bg-white/30 rounded-full"
+                <motion.div style={{ willChange: 'transform, opacity' }} className="absolute bottom-4 left-4 w-4 h-4 bg-white/30 rounded-full gpu-accelerate-opacity"
                   animate={{
                     y: [0, -5, 0],
                     opacity: [0.3, 0.7, 0.3],

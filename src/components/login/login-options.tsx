@@ -46,15 +46,13 @@ export default function LoginOptions() {
     <section key={`login-options-${language}`} className="py-20 bg-[#F4F5FA]">
       <div className="container mx-auto px-4">
         {/* Section Title */}
-        <motion.div
-          className="text-center mb-16"
+        <motion.div style={{ willChange: 'transform, opacity' }} className="text-center mb-16 gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-6"
+          <motion.h2 style={{ willChange: 'transform, opacity' }} className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-6 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -63,8 +61,7 @@ export default function LoginOptions() {
             {t("login.options.title")}
           </motion.h2>
           
-          <motion.p
-            className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
+          <motion.p style={{ willChange: 'transform, opacity' }} className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -77,15 +74,13 @@ export default function LoginOptions() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Login Type Selection */}
-            <motion.div
-              className="space-y-6"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="space-y-6 gpu-accelerate-opacity"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <motion.h3
-                className="text-2xl font-bold font-oswald text-gray-800 mb-6"
+              <motion.h3 style={{ willChange: 'transform, opacity' }} className="text-2xl font-bold font-oswald text-gray-800 mb-6 gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -117,8 +112,7 @@ export default function LoginOptions() {
                   >
                     {/* Selection indicator */}
                     {selectedType === type.id && (
-                      <motion.div
-                        className="absolute -top-2 -right-2 w-8 h-8 bg-[#0349AA] rounded-full flex items-center justify-center"
+                      <motion.div style={{ willChange: 'transform, opacity' }} className="absolute -top-2 -right-2 w-8 h-8 bg-[#0349AA] rounded-full flex items-center justify-center gpu-accelerate-opacity"
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
@@ -151,15 +145,13 @@ export default function LoginOptions() {
             </motion.div>
 
             {/* Login Form */}
-            <motion.div
-              className="bg-white rounded-2xl shadow-xl p-8"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="bg-white rounded-2xl shadow-xl p-8 gpu-accelerate-opacity"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <motion.h3
-                className="text-2xl font-bold font-oswald text-gray-800 mb-6"
+              <motion.h3 style={{ willChange: 'transform, opacity' }} className="text-2xl font-bold font-oswald text-gray-800 mb-6 gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
@@ -210,8 +202,7 @@ export default function LoginOptions() {
                 </motion.div>
 
                 {/* Remember Me & Forgot Password */}
-                <motion.div
-                  className="flex items-center justify-between"
+                <motion.div style={{ willChange: 'transform, opacity' }} className="flex items-center justify-between gpu-accelerate-opacity"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
@@ -250,8 +241,7 @@ export default function LoginOptions() {
                 </motion.button>
 
                 {/* Sign Up Link */}
-                <motion.div
-                  className="text-center"
+                <motion.div style={{ willChange: 'transform, opacity' }} className="text-center gpu-accelerate-opacity"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}

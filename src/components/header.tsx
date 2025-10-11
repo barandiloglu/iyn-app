@@ -58,17 +58,19 @@ export default function Header() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="bg-white shadow-sm sticky top-0 z-50"
+      className="bg-white shadow-sm sticky top-0 z-50 gpu-accelerate-opacity"
+      style={{ willChange: 'opacity' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <motion.a 
             href={homeUrl}
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-3 gpu-accelerate"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
             aria-label="IYN Education & Consultancy Home"
+            style={{ willChange: 'transform' }}
           >
             <Image
               src="/logo.png"
@@ -86,7 +88,7 @@ export default function Header() {
               <motion.a
                 key={item.key}
                 href={item.href}
-                className={`transition-colors duration-200 ${
+                className={`transition-colors duration-200 gpu-accelerate-opacity ${
                   isActive(item.href)
                     ? "text-primary font-bold"
                     : "text-neutral font-medium hover:text-primary"
@@ -96,6 +98,7 @@ export default function Header() {
                 transition={{ delay: index * 0.1, duration: 0.3 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                style={{ willChange: 'transform, opacity' }}
               >
                 {t(item.key)}
               </motion.a>
@@ -106,13 +109,14 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <motion.a
               href={`/${language}/login`}
-              className={`flex items-center space-x-2 transition-colors duration-200 ${
+              className={`flex items-center space-x-2 transition-colors duration-200 gpu-accelerate ${
                 isActive(`/${language}/login`)
                   ? "text-primary font-bold"
                   : "text-neutral hover:text-primary"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              style={{ willChange: 'transform' }}
             >
               <User size={20} />
               <span>{t("nav.login")}</span>
@@ -121,10 +125,11 @@ export default function Header() {
             {/* Language Selector */}
             <div className="relative" ref={languageDropdownRef}>
               <motion.button
-                className="flex items-center space-x-2 px-3 py-2 text-neutral hover:text-primary transition-colors duration-200 rounded-lg hover:bg-neutral-light/50"
+                className="flex items-center space-x-2 px-3 py-2 text-neutral hover:text-primary transition-colors duration-200 rounded-lg hover:bg-neutral-light/50 gpu-accelerate"
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                style={{ willChange: 'transform' }}
               >
                 <ReactCountryFlag 
                   countryCode={currentLanguage.country} 
@@ -148,16 +153,17 @@ export default function Header() {
               <AnimatePresence>
                 {isLanguageOpen && (
                   <motion.div
-                    className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-neutral-light/20 overflow-hidden z-50"
+                    className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-neutral-light/20 overflow-hidden z-50 gpu-accelerate-opacity"
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
+                    style={{ willChange: 'transform, opacity' }}
                   >
                     {languages.map((lang, index) => (
                       <motion.button
                         key={lang.code}
-                        className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-neutral-light/50 transition-colors duration-200 ${
+                        className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-neutral-light/50 transition-colors duration-200 gpu-accelerate-opacity ${
                           language === lang.code ? 'bg-primary/10 text-primary' : 'text-neutral'
                         }`}
                         onClick={() => {
@@ -168,6 +174,7 @@ export default function Header() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.05 }}
                         whileHover={{ x: 5 }}
+                        style={{ willChange: 'transform, opacity' }}
                       >
                         <ReactCountryFlag 
                           countryCode={lang.country} 
@@ -197,9 +204,10 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <motion.button
-            className="md:hidden p-2 text-neutral"
+            className="md:hidden p-2 text-neutral gpu-accelerate"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileTap={{ scale: 0.9 }}
+            style={{ willChange: 'transform' }}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -213,14 +221,15 @@ export default function Header() {
             height: isMenuOpen ? "auto" : 0 
           }}
           transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden"
+          className="md:hidden overflow-hidden gpu-accelerate-opacity"
+          style={{ willChange: 'height, opacity' }}
         >
           <nav className="py-4 space-y-4">
             {navigationItems.map((item, index) => (
               <motion.a
                 key={item.key}
                 href={item.href}
-                className={`block transition-colors duration-200 ${
+                className={`block transition-colors duration-200 gpu-accelerate-opacity ${
                   isActive(item.href)
                     ? "text-primary font-bold"
                     : "text-neutral font-medium hover:text-primary"
@@ -228,6 +237,7 @@ export default function Header() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
                 transition={{ delay: index * 0.1, duration: 0.3 }}
+                style={{ willChange: 'transform, opacity' }}
               >
                 {t(item.key)}
               </motion.a>
@@ -235,17 +245,18 @@ export default function Header() {
             
             {/* Mobile Language Selector */}
             <motion.div
-              className="space-y-2"
+              className="space-y-2 gpu-accelerate-opacity"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
               transition={{ delay: navigationItems.length * 0.1, duration: 0.3 }}
+              style={{ willChange: 'transform, opacity' }}
             >
               <span className="text-neutral/60 text-sm font-medium">Language / Dil</span>
               <div className="flex space-x-2">
                 {languages.map((lang) => (
                   <motion.button
                     key={lang.code}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 gpu-accelerate ${
                       language === lang.code 
                         ? 'bg-primary text-white' 
                         : 'bg-neutral-light text-neutral hover:bg-primary/10'
@@ -256,6 +267,7 @@ export default function Header() {
                     }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    style={{ willChange: 'transform' }}
                   >
                     <ReactCountryFlag 
                       countryCode={lang.country} 
@@ -274,7 +286,7 @@ export default function Header() {
 
             <motion.a
               href={`/${language}/login`}
-              className={`flex items-center space-x-2 font-medium transition-colors duration-200 w-full ${
+              className={`flex items-center space-x-2 font-medium transition-colors duration-200 w-full gpu-accelerate-opacity ${
                 isActive(`/${language}/login`)
                   ? "text-primary font-bold"
                   : "text-neutral hover:text-primary"
@@ -283,6 +295,7 @@ export default function Header() {
               animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
               transition={{ delay: (navigationItems.length + 1) * 0.1, duration: 0.3 }}
               onClick={() => setIsMenuOpen(false)}
+              style={{ willChange: 'transform, opacity' }}
             >
               <User size={20} />
               <span>{t("nav.login")}</span>

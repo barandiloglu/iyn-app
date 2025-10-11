@@ -42,15 +42,13 @@ export default function WhyIYNCourses() {
     <section key={`why-iyn-courses-${language}`} className="py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Why IYN Section */}
-        <motion.div 
-          className="text-center mb-20"
+        <motion.div style={{ willChange: 'transform, opacity' }} className="text-center mb-20 gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-6"
+          <motion.h2 style={{ willChange: 'transform, opacity' }} className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-6 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -78,8 +76,7 @@ export default function WhyIYNCourses() {
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
             >
-              <motion.div 
-                className="mb-6 text-[#0349AA]"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="mb-6 text-[#0349AA] gpu-accelerate-opacity"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 + (0.1 * index), ease: "easeOut" }}
@@ -88,8 +85,7 @@ export default function WhyIYNCourses() {
                 {feature.icon}
               </motion.div>
               
-              <motion.h3 
-                className="text-xl font-bold font-oswald text-gray-800 mb-4"
+              <motion.h3 style={{ willChange: 'transform, opacity' }} className="text-xl font-bold font-oswald text-gray-800 mb-4 gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 + (0.1 * index), ease: "easeOut" }}
@@ -98,8 +94,7 @@ export default function WhyIYNCourses() {
                 {t(feature.title)}
               </motion.h3>
               
-              <motion.p 
-                className="text-gray-600 leading-relaxed"
+              <motion.p style={{ willChange: 'transform, opacity' }} className="text-gray-600 leading-relaxed gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 + (0.1 * index), ease: "easeOut" }}
@@ -112,15 +107,13 @@ export default function WhyIYNCourses() {
         </div>
 
         {/* Call to Action */}
-        <motion.div 
-          className="bg-[#ec8d13] rounded-2xl p-8 md:p-12 text-center text-white"
+        <motion.div style={{ willChange: 'transform, opacity' }} className="bg-[#ec8d13] rounded-2xl p-8 md:p-12 text-center text-white gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold font-oswald mb-6"
+          <motion.h2 style={{ willChange: 'transform, opacity' }} className="text-3xl md:text-4xl font-bold font-oswald mb-6 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -129,8 +122,7 @@ export default function WhyIYNCourses() {
             {t("courses.cta.title")}
           </motion.h2>
           
-          <motion.p 
-            className="text-lg mb-8 max-w-3xl mx-auto"
+          <motion.p style={{ willChange: 'transform, opacity' }} className="text-lg mb-8 max-w-3xl mx-auto gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -145,8 +137,7 @@ export default function WhyIYNCourses() {
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <motion.button 
-              className="bg-white text-[#ec8d13] font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg"
+            <motion.button style={{ willChange: 'transform, opacity' }} className="bg-white text-[#ec8d13] font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg gpu-accelerate-opacity"
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 20px 40px rgba(255, 255, 255, 0.3)"

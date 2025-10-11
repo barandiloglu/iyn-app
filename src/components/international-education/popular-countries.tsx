@@ -27,15 +27,13 @@ export default function PopularCountries() {
   return (
     <section key={`popular-countries-${language}`} className="py-20 bg-[#F4F5FA]">
       <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-16"
+        <motion.div style={{ willChange: 'transform, opacity' }} className="text-center mb-16 gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-6"
+          <motion.h2 style={{ willChange: 'transform, opacity' }} className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-6 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -44,8 +42,7 @@ export default function PopularCountries() {
             {t("overseas.countries.title")}
           </motion.h2>
           
-          <motion.p 
-            className="text-lg text-gray-600 max-w-3xl mx-auto mb-12"
+          <motion.p style={{ willChange: 'transform, opacity' }} className="text-lg text-gray-600 max-w-3xl mx-auto mb-12 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -89,8 +86,7 @@ export default function PopularCountries() {
                     {t(country.description)}
                   </p>
                   
-                  <motion.button
-                    className="w-full bg-[#ec8d13] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-[#d17a0f]"
+                  <motion.button style={{ willChange: 'transform, opacity' }} className="w-full bg-[#ec8d13] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-[#d17a0f] gpu-accelerate-opacity"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >

@@ -14,18 +14,20 @@ export default function AboutMission() {
         <div className="grid md:grid-cols-2 gap-12 mb-20">
           {/* Mission */}
           <motion.div 
-            className="text-center"
+            className="text-center gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
+            style={{ willChange: 'transform, opacity' }}
           >
             <motion.div 
-              className="mb-6"
+              className="mb-6 gpu-accelerate"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               viewport={{ once: true }}
+              style={{ willChange: 'transform' }}
             >
               <svg className="w-16 h-16 mx-auto text-[#0349AA]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
@@ -33,20 +35,22 @@ export default function AboutMission() {
               </svg>
             </motion.div>
             <motion.h3 
-              className="text-2xl font-bold font-oswald uppercase text-[#ec8d13] mb-4"
+              className="text-2xl font-bold font-oswald uppercase text-[#ec8d13] mb-4 gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
               viewport={{ once: true }}
+              style={{ willChange: 'transform, opacity' }}
             >
               {t("about.mission.title")}
             </motion.h3>
             <motion.p 
-              className="text-gray-800 leading-relaxed"
+              className="text-gray-800 leading-relaxed gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true }}
+              style={{ willChange: 'transform, opacity' }}
             >
               {t("about.mission.description")}
             </motion.p>
@@ -54,18 +58,20 @@ export default function AboutMission() {
 
           {/* Vision */}
           <motion.div 
-            className="text-center"
+            className="text-center gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
+            style={{ willChange: 'transform, opacity' }}
           >
             <motion.div 
-              className="mb-6"
+              className="mb-6 gpu-accelerate"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true }}
+              style={{ willChange: 'transform' }}
             >
               <svg className="w-16 h-16 mx-auto text-[#0349AA]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -73,20 +79,22 @@ export default function AboutMission() {
               </svg>
             </motion.div>
             <motion.h3 
-              className="text-2xl font-bold font-oswald uppercase text-[#ec8d13] mb-4"
+              className="text-2xl font-bold font-oswald uppercase text-[#ec8d13] mb-4 gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
               viewport={{ once: true }}
+              style={{ willChange: 'transform, opacity' }}
             >
               {t("about.vision.title")}
             </motion.h3>
             <motion.p 
-              className="text-gray-800 leading-relaxed"
+              className="text-gray-800 leading-relaxed gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
+              style={{ willChange: 'transform, opacity' }}
             >
               {t("about.vision.description")}
             </motion.p>
@@ -95,18 +103,20 @@ export default function AboutMission() {
 
         {/* Our Story */}
         <motion.div 
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
+          style={{ willChange: 'transform, opacity' }}
         >
           <motion.div 
-            className="text-center mb-12"
+            className="text-center mb-12 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
+            style={{ willChange: 'transform, opacity' }}
           >
             <h2 className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-4">
               {t("about.story.title")}
@@ -122,7 +132,8 @@ export default function AboutMission() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="relative"
+              className="relative gpu-accelerate-opacity"
+              style={{ willChange: 'transform, opacity' }}
             >
               {/* Clean, simple photo design */}
               <div className="relative">
@@ -141,36 +152,40 @@ export default function AboutMission() {
               </div>
             </motion.div>
             <motion.div 
-              className="space-y-6"
+              className="space-y-6 gpu-accelerate-opacity"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true }}
+              style={{ willChange: 'transform, opacity' }}
             >
               <motion.p 
-                className="text-gray-700 leading-relaxed"
+                className="text-gray-700 leading-relaxed gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
                 viewport={{ once: true }}
+                style={{ willChange: 'transform, opacity' }}
               >
                 {t("about.story.paragraph1")}
               </motion.p>
               <motion.p 
-                className="text-gray-700 leading-relaxed"
+                className="text-gray-700 leading-relaxed gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
                 viewport={{ once: true }}
+                style={{ willChange: 'transform, opacity' }}
               >
                 {t("about.story.paragraph2")}
               </motion.p>
               <motion.p 
-                className="text-gray-700 leading-relaxed"
+                className="text-gray-700 leading-relaxed gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
                 viewport={{ once: true }}
+                style={{ willChange: 'transform, opacity' }}
               >
                 {t("about.story.paragraph3")}
               </motion.p>
@@ -180,27 +195,30 @@ export default function AboutMission() {
 
         {/* Team Section */}
         <motion.div 
-          className="mt-20 text-center"
+          className="mt-20 text-center gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
+          style={{ willChange: 'transform, opacity' }}
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-4"
+            className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-4 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
+            style={{ willChange: 'transform, opacity' }}
           >
             {t("about.team.title")}
           </motion.h2>
           <motion.p 
-            className="text-lg text-gray-600 mb-12"
+            className="text-lg text-gray-600 mb-12 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             viewport={{ once: true }}
+            style={{ willChange: 'transform, opacity' }}
           >
             {t("about.team.subtitle")}
           </motion.p>
@@ -208,17 +226,19 @@ export default function AboutMission() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Team Member 1 */}
             <motion.div 
-              className="text-center"
+              className="text-center gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
+              style={{ willChange: 'transform, opacity' }}
             >
               <motion.div 
-                className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center"
+                className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center gpu-accelerate"
                 whileHover={{ rotate: 5 }}
                 transition={{ duration: 0.3 }}
+                style={{ willChange: 'transform' }}
               >
                 <div className="w-full h-full bg-gradient-to-br from-[#0349AA] to-[#0091FF] flex items-center justify-center text-white font-bold text-2xl">
                   AC
@@ -234,17 +254,19 @@ export default function AboutMission() {
 
             {/* Team Member 2 */}
             <motion.div 
-              className="text-center"
+              className="text-center gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
+              style={{ willChange: 'transform, opacity' }}
             >
               <motion.div 
-                className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center"
+                className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center gpu-accelerate"
                 whileHover={{ rotate: -5 }}
                 transition={{ duration: 0.3 }}
+                style={{ willChange: 'transform' }}
               >
                 <div className="w-full h-full bg-gradient-to-br from-[#ec8d13] to-[#d17a0f] flex items-center justify-center text-white font-bold text-2xl">
                   EÖ
@@ -260,17 +282,19 @@ export default function AboutMission() {
 
             {/* Team Member 3 */}
             <motion.div 
-              className="text-center"
+              className="text-center gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
+              style={{ willChange: 'transform, opacity' }}
             >
               <motion.div 
-                className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center"
+                className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center gpu-accelerate"
                 whileHover={{ rotate: 5 }}
                 transition={{ duration: 0.3 }}
+                style={{ willChange: 'transform' }}
               >
                 <div className="w-full h-full bg-gradient-to-br from-[#0349AA] to-[#0091FF] flex items-center justify-center text-white font-bold text-2xl">
                   MD

@@ -68,3 +68,40 @@ html {
 html {
   scroll-behavior: smooth;
 }
+
+/* GPU Acceleration for animations - Safari optimization */
+.gpu-accelerate {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translateZ(0);
+}
+
+.gpu-accelerate-opacity {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translateZ(0);
+}
+
+.gpu-accelerate-all {
+  will-change: transform, opacity, filter;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* Safari-specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  .motion-safe {
+    -webkit-transform: translateZ(0);
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+  }
+}
