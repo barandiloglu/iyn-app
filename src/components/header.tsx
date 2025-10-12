@@ -43,7 +43,8 @@ export default function Header() {
     { key: "nav.courses", href: `/${language}/courses` },
     { key: "nav.exams", href: `/${language}/exams` },
     { key: "nav.overseas", href: `/${language}/international-education` },
-    { key: "nav.blog", href: `/${language}/blog` }
+    { key: "nav.careers", href: `/${language}/careers` },
+    { key: "nav.blog", href: `/${language}/blog` },
   ];
 
   const languages = [
