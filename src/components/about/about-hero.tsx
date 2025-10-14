@@ -5,7 +5,7 @@ import { useLanguage } from "@/contexts/language-context";
 import { useIsDesktop } from "@/hooks/use-media-query";
 
 export default function AboutHero() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const isDesktop = useIsDesktop();
 
   return (

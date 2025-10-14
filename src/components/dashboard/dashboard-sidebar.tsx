@@ -8,7 +8,7 @@ import { useLanguage } from "@/contexts/language-context";
 interface MenuItem {
   id: string;
   labelKey: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
   href?: string;
 }
 

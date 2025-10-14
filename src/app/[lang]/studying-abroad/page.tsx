@@ -1,7 +1,7 @@
-import OverseasHero from "@/components/studying-abroad/overseas-hero";
-import OverseasIntro from "@/components/studying-abroad/overseas-intro";
-import PopularCountries from "@/components/studying-abroad/popular-countries";
-import ExtendedCountries from "@/components/studying-abroad/extended-countries";
+import OverseasHero from "@/components/study-abroad/overseas-hero";
+import OverseasIntro from "@/components/study-abroad/overseas-intro";
+import PopularCountries from "@/components/study-abroad/popular-countries";
+import ExtendedCountries from "@/components/study-abroad/extended-countries";
 
 interface PageProps {
   params: Promise<{

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Square } from "lucide-react";
+import { Check } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/language-context";
 

@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Bell, User, X, Home, ChevronDown } from "lucide-react";
+import { Bell, X, Home, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/language-context";
 import { useRouter } from "next/navigation";
@@ -70,7 +70,7 @@ export default function DashboardHeader() {
   const currentLanguage = languages.find(lang => lang.code === language) || languages[0];
 
   const handleLanguageChange = (langCode: string) => {
-    setLanguage(langCode);
+    setLanguage(langCode as "tr" | "en");
     setIsLanguageOpen(false);
     // Update the URL to reflect the language change
     const currentPath = window.location.pathname;
