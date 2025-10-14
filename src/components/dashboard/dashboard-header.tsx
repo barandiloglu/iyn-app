@@ -96,11 +96,11 @@ export default function DashboardHeader() {
           style={{ willChange: "transform" }}
         >
           <Image
-            src="/logo.png"
+            src="/images/dashboard/squareLogo.png"
             alt="İYN Education & Consultancy"
-            width={40}
-            height={40}
-            className="object-contain"
+            width={45}
+            height={45}
+            className="object-contain rounded-lg"
           />
         </motion.div>
         
