@@ -10,7 +10,7 @@ interface Assignment {
   id: string;
   course: string;
   titleKey: string;
-  dueDate: string;
+  dueDateKey: string;
   status: "completed" | "pending" | "not-started";
   isOverdue?: boolean;
   actionKey: string;
@@ -21,7 +21,7 @@ interface Exam {
   id: string;
   course: string;
   titleKey: string;
-  dueDate: string;
+  dueDateKey: string;
   status: "completed" | "pending" | "not-started";
   isOverdue?: boolean;
   actionKey: string;
@@ -33,7 +33,7 @@ const assignments: Assignment[] = [
     id: "1",
     course: "AP Calculus BC",
     titleKey: "assignments.calculus.title",
-    dueDate: "15 Ekim 2025",
+    dueDateKey: "dueDate.oct15",
     status: "completed",
     actionKey: "assignments.action.viewResults",
     actionType: "view-results"
@@ -42,7 +42,7 @@ const assignments: Assignment[] = [
     id: "2",
     course: "AP Physics 1",
     titleKey: "assignments.physics.title",
-    dueDate: "22 Ekim 2025",
+    dueDateKey: "dueDate.oct22",
     status: "pending",
     isOverdue: true,
     actionKey: "assignments.action.download",
@@ -52,7 +52,7 @@ const assignments: Assignment[] = [
     id: "3",
     course: "IB English A",
     titleKey: "assignments.english.title",
-    dueDate: "29 Ekim 2025",
+    dueDateKey: "dueDate.oct29",
     status: "not-started",
     isOverdue: true,
     actionKey: "assignments.action.start",
@@ -62,7 +62,7 @@ const assignments: Assignment[] = [
     id: "4",
     course: "AP Microeconomics",
     titleKey: "assignments.economics.title",
-    dueDate: "5 Kasım 2025",
+    dueDateKey: "dueDate.nov5",
     status: "pending",
     actionKey: "assignments.action.download",
     actionType: "download"
@@ -74,7 +74,7 @@ const exams: Exam[] = [
     id: "5",
     course: "AP Calculus BC",
     titleKey: "exams.calculus.title",
-    dueDate: "12 Ekim 2025",
+    dueDateKey: "dueDate.oct12",
     status: "completed",
     actionKey: "exams.action.viewResults",
     actionType: "view-results"
@@ -83,7 +83,7 @@ const exams: Exam[] = [
     id: "6",
     course: "AP Physics 1",
     titleKey: "exams.physics.title",
-    dueDate: "18 Ekim 2025",
+    dueDateKey: "dueDate.oct18",
     status: "pending",
     actionKey: "exams.action.start",
     actionType: "start"
@@ -92,7 +92,7 @@ const exams: Exam[] = [
     id: "7",
     course: "IB Chemistry",
     titleKey: "exams.chemistry.title",
-    dueDate: "25 Ekim 2025",
+    dueDateKey: "dueDate.oct25",
     status: "not-started",
     actionKey: "exams.action.start",
     actionType: "start"
@@ -191,7 +191,7 @@ function AssignmentExamRow({ item, index, type }: { item: Assignment | Exam; ind
       </td>
       <td className="px-4 py-4">
         <span className={`text-sm ${item.isOverdue ? "text-red-600 font-medium" : "text-neutral"}`}>
-          {item.dueDate}
+          {t(item.dueDateKey)}
         </span>
       </td>
       <td className="px-4 py-4">
@@ -209,6 +209,7 @@ function AssignmentExamRow({ item, index, type }: { item: Assignment | Exam; ind
 }
 
 function SectionHeader({ title, count, type }: { title: string; count: number; type: "assignment" | "exam" }) {
+  const { t } = useLanguage();
   const icon = type === "assignment" ? FileText : ClipboardList;
   const Icon = icon;
 
@@ -225,7 +226,9 @@ function SectionHeader({ title, count, type }: { title: string; count: number; t
         </div>
         <div>
           <h3 className="text-xl font-bold font-header text-neutral">{title}</h3>
-          <p className="text-sm text-gray-600">{count} {type === "assignment" ? "ödev" : "sınav"}</p>
+          <p className="text-sm text-gray-600">
+            {count} {type === "assignment" ? t("dashboard.assignments.count.assignments") : t("dashboard.assignments.count.exams")}
+          </p>
         </div>
       </div>
     </motion.div>

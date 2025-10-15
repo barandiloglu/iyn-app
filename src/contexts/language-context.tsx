@@ -477,6 +477,8 @@ const translations = {
     "dashboard.assignments.status.completed": "Tamamlandı",
     "dashboard.assignments.status.pending": "Bekliyor",
     "dashboard.assignments.status.notStarted": "Başlamadı",
+    "dashboard.assignments.count.assignments": "ödev",
+    "dashboard.assignments.count.exams": "sınav",
     
     // Assignment and Exam Data
     "assignments.calculus.title": "Limit Problemleri Set 1",
@@ -492,6 +494,19 @@ const translations = {
     "exams.action.viewResults": "Sonuç Gör",
     "exams.action.download": "Testi İndir",
     "exams.action.start": "Sınava Başla",
+    
+    // Month names
+    "months.october": "Ekim",
+    "months.november": "Kasım",
+    
+    // Due dates
+    "dueDate.oct15": "15 Ekim 2025",
+    "dueDate.oct22": "22 Ekim 2025", 
+    "dueDate.oct29": "29 Ekim 2025",
+    "dueDate.nov5": "5 Kasım 2025",
+    "dueDate.oct12": "12 Ekim 2025",
+    "dueDate.oct18": "18 Ekim 2025",
+    "dueDate.oct25": "25 Ekim 2025",
   },
   en: {
     // Navigation
@@ -955,6 +970,8 @@ const translations = {
     "dashboard.assignments.status.completed": "Completed",
     "dashboard.assignments.status.pending": "Pending",
     "dashboard.assignments.status.notStarted": "Not Started",
+    "dashboard.assignments.count.assignments": "assignments",
+    "dashboard.assignments.count.exams": "exams",
     
     // Assignment and Exam Data
     "assignments.calculus.title": "Limit Problems Set 1",
@@ -970,6 +987,19 @@ const translations = {
     "exams.action.viewResults": "View Results",
     "exams.action.download": "Download Test",
     "exams.action.start": "Start Exam",
+    
+    // Month names
+    "months.october": "October",
+    "months.november": "November",
+    
+    // Due dates
+    "dueDate.oct15": "October 15, 2025",
+    "dueDate.oct22": "October 22, 2025", 
+    "dueDate.oct29": "October 29, 2025",
+    "dueDate.nov5": "November 5, 2025",
+    "dueDate.oct12": "October 12, 2025",
+    "dueDate.oct18": "October 18, 2025",
+    "dueDate.oct25": "October 25, 2025",
   }
 };
 
