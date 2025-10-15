@@ -33,16 +33,28 @@ export default async function StudentDashboard({ params }: PageProps) {
       <DashboardHeader />
       
       <div className="flex h-[calc(100vh-80px)]">
+<<<<<<< HEAD
         {/* Sidebar - Hidden on mobile, visible on desktop */}
+=======
+        {/* Sidebar */}
+>>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
         <DashboardSidebar />
         
         {/* Main Content */}
         <div className="flex-1 flex flex-col overflow-hidden">
+<<<<<<< HEAD
           <div className="flex-1 overflow-y-auto bg-[#F4F5FA] p-4 md:p-6">
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
                 {/* Left Column - Main Content */}
                 <div className="lg:col-span-2 space-y-4 md:space-y-6">
+=======
+          <div className="flex-1 overflow-y-auto bg-[#F4F5FA] p-6">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* Left Column - Main Content */}
+                <div className="lg:col-span-2 space-y-6">
+>>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
                   {/* Welcome Section */}
                   <WelcomeSection />
                   
@@ -56,8 +68,13 @@ export default async function StudentDashboard({ params }: PageProps) {
                   <CoursesSection />
                 </div>
                 
+<<<<<<< HEAD
                 {/* Right Column - Sidebar Content - Hidden on mobile, shown on desktop */}
                 <div className="hidden lg:block space-y-4 md:space-y-6">
+=======
+                {/* Right Column - Sidebar Content */}
+                <div className="space-y-6">
+>>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
                   {/* Support Team */}
                   <SupportTeam />
                   
@@ -65,6 +82,7 @@ export default async function StudentDashboard({ params }: PageProps) {
                   <NotificationsSection />
                 </div>
               </div>
+<<<<<<< HEAD
               
               {/* Mobile-only sections - shown below main content on mobile */}
               <div className="lg:hidden space-y-4 mt-6">
@@ -74,6 +92,8 @@ export default async function StudentDashboard({ params }: PageProps) {
                 {/* Notifications */}
                 <NotificationsSection />
               </div>
+=======
+>>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
             </div>
           </div>
         </div>

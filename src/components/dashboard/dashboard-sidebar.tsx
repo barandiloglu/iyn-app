@@ -1,7 +1,12 @@
 "use client";
 
+<<<<<<< HEAD
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, BookOpen, FileText, ClipboardList, BarChart3, LogOut, X } from "lucide-react";
+=======
+import { motion } from "framer-motion";
+import { Home, BookOpen, FileText, ClipboardList, BarChart3, LogOut } from "lucide-react";
+>>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
 import { useState } from "react";
 import { useLanguage } from "@/contexts/language-context";
 
@@ -23,6 +28,7 @@ const menuItems: MenuItem[] = [
 export default function DashboardSidebar() {
   const { t } = useLanguage();
   const [activeItem, setActiveItem] = useState("home");
+<<<<<<< HEAD
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -61,6 +67,17 @@ export default function DashboardSidebar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         style={{ willChange: "transform" }}
       >
+=======
+
+  return (
+    <motion.aside 
+      className="w-64 bg-white border-r border-gray-200 flex flex-col gpu-accelerate"
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      style={{ willChange: "transform" }}
+    >
+>>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
       {/* Navigation Menu */}
       <nav className="flex-1 p-4">
         <motion.div 
@@ -112,6 +129,7 @@ export default function DashboardSidebar() {
           <span className="font-medium">{t("dashboard.sidebar.logout")}</span>
         </motion.button>
       </motion.div>
+<<<<<<< HEAD
       </motion.aside>
 
       {/* Mobile Sidebar */}
@@ -186,5 +204,8 @@ export default function DashboardSidebar() {
         )}
       </AnimatePresence>
     </>
+=======
+    </motion.aside>
+>>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
   );
 }
