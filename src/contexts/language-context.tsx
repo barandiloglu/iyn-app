@@ -462,6 +462,36 @@ const translations = {
     "dashboard.sidebar.exams": "Sınav Arayüzü",
     "dashboard.sidebar.reports": "Raporlama",
     "dashboard.sidebar.logout": "Çıkış Yap",
+    
+    // Assignments and Exams
+    "dashboard.assignments.title": "Tüm Ödevler",
+    "dashboard.assignments.assignments": "Ödevler",
+    "dashboard.assignments.exams": "Sınavlar",
+    "dashboard.assignments.allAssignments": "Tüm Ödevler",
+    "dashboard.assignments.allExams": "Tüm Sınavlar",
+    "dashboard.assignments.course": "Ders",
+    "dashboard.assignments.assignmentTitle": "Ödev Adı",
+    "dashboard.assignments.dueDate": "Teslim Tarihi",
+    "dashboard.assignments.status": "Durum",
+    "dashboard.assignments.action": "Eylem",
+    "dashboard.assignments.status.completed": "Tamamlandı",
+    "dashboard.assignments.status.pending": "Bekliyor",
+    "dashboard.assignments.status.notStarted": "Başlamadı",
+    
+    // Assignment and Exam Data
+    "assignments.calculus.title": "Limit Problemleri Set 1",
+    "assignments.physics.title": "Kinetik Enerji Raporu",
+    "assignments.english.title": "\"The Great Gatsby\" Analizi",
+    "assignments.economics.title": "Arz-Talep Grafiği Çizimi",
+    "exams.calculus.title": "Türev Testi",
+    "exams.physics.title": "Elektrik ve Manyetizma Sınavı",
+    "exams.chemistry.title": "Organik Kimya Finali",
+    "assignments.action.viewResults": "Sonuç Gör",
+    "assignments.action.download": "Testi İndir",
+    "assignments.action.start": "Sınava Başla",
+    "exams.action.viewResults": "Sonuç Gör",
+    "exams.action.download": "Testi İndir",
+    "exams.action.start": "Sınava Başla",
   },
   en: {
     // Navigation
@@ -910,6 +940,36 @@ const translations = {
     "dashboard.sidebar.exams": "Exam Interface",
     "dashboard.sidebar.reports": "Reporting",
     "dashboard.sidebar.logout": "Log Out",
+    
+    // Assignments and Exams
+    "dashboard.assignments.title": "All Assignments",
+    "dashboard.assignments.assignments": "Assignments",
+    "dashboard.assignments.exams": "Exams",
+    "dashboard.assignments.allAssignments": "All Assignments",
+    "dashboard.assignments.allExams": "All Exams",
+    "dashboard.assignments.course": "Course",
+    "dashboard.assignments.assignmentTitle": "Assignment Name",
+    "dashboard.assignments.dueDate": "Due Date",
+    "dashboard.assignments.status": "Status",
+    "dashboard.assignments.action": "Action",
+    "dashboard.assignments.status.completed": "Completed",
+    "dashboard.assignments.status.pending": "Pending",
+    "dashboard.assignments.status.notStarted": "Not Started",
+    
+    // Assignment and Exam Data
+    "assignments.calculus.title": "Limit Problems Set 1",
+    "assignments.physics.title": "Kinetic Energy Report",
+    "assignments.english.title": "\"The Great Gatsby\" Analysis",
+    "assignments.economics.title": "Supply-Demand Graph Drawing",
+    "exams.calculus.title": "Derivative Test",
+    "exams.physics.title": "Electricity and Magnetism Exam",
+    "exams.chemistry.title": "Organic Chemistry Final",
+    "assignments.action.viewResults": "View Results",
+    "assignments.action.download": "Download Test",
+    "assignments.action.start": "Start Exam",
+    "exams.action.viewResults": "View Results",
+    "exams.action.download": "Download Test",
+    "exams.action.start": "Start Exam",
   }
 };
 

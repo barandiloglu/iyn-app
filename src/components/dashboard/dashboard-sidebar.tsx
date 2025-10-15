@@ -3,6 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, BookOpen, FileText, ClipboardList, BarChart3, LogOut, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useLanguage } from "@/contexts/language-context";
 
 interface MenuItem {
@@ -13,18 +15,27 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { id: "home", labelKey: "dashboard.sidebar.home", icon: Home },
-  { id: "courses", labelKey: "dashboard.sidebar.courses", icon: BookOpen },
-  { id: "assignments", labelKey: "dashboard.sidebar.assignments", icon: FileText },
-  { id: "exams", labelKey: "dashboard.sidebar.exams", icon: ClipboardList },
-  { id: "reports", labelKey: "dashboard.sidebar.reports", icon: BarChart3 },
+  { id: "home", labelKey: "dashboard.sidebar.home", icon: Home, href: "/dashboard" },
+  { id: "courses", labelKey: "dashboard.sidebar.courses", icon: BookOpen, href: "/dashboard" },
+  { id: "assignments", labelKey: "dashboard.sidebar.assignments", icon: FileText, href: "/dashboard/assignments" },
+  { id: "exams", labelKey: "dashboard.sidebar.exams", icon: ClipboardList, href: "/dashboard/exams" },
+  { id: "reports", labelKey: "dashboard.sidebar.reports", icon: BarChart3, href: "/dashboard" },
 ];
 
 export default function DashboardSidebar() {
-  const { t } = useLanguage();
-  const [activeItem, setActiveItem] = useState("home");
+  const { t, language } = useLanguage();
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
+
+  // Determine active item based on current pathname
+  const getActiveItem = () => {
+    if (pathname.includes('/assignments')) return 'assignments';
+    if (pathname.includes('/exams')) return 'exams';
+    return 'home';
+  };
+
+  const activeItem = getActiveItem();
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -80,23 +91,26 @@ export default function DashboardSidebar() {
             const isActive = activeItem === item.id;
             
             return (
-              <motion.button
+              <motion.div
                 key={item.id}
-                className={`w-full cursor-pointer flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
-                  isActive 
-                    ? "bg-accent text-white shadow-md" 
-                    : "text-neutral hover:bg-gray-100 hover:text-primary"
-                }`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => setActiveItem(item.id)}
               >
-                <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-gray-500"}`} />
-                <span className="font-medium">{t(item.labelKey)}</span>
-              </motion.button>
+                <Link
+                  href={`/${language}${item.href}`}
+                  className={`w-full cursor-pointer flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
+                    isActive 
+                      ? "bg-accent text-white shadow-md" 
+                      : "text-neutral hover:bg-gray-100 hover:text-primary"
+                  }`}
+                >
+                  <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-gray-500"}`} />
+                  <span className="font-medium">{t(item.labelKey)}</span>
+                </Link>
+              </motion.div>
             );
           })}
         </motion.div>
@@ -152,26 +166,27 @@ export default function DashboardSidebar() {
                   const isActive = activeItem === item.id;
                   
                   return (
-                    <motion.button
+                    <motion.div
                       key={item.id}
-                      className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
-                        isActive 
-                          ? "bg-accent text-white shadow-md" 
-                          : "text-neutral hover:bg-gray-100 hover:text-primary"
-                      }`}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      onClick={() => {
-                        setActiveItem(item.id);
-                        setIsMobileMenuOpen(false);
-                      }}
                     >
-                      <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-gray-500"}`} />
-                      <span className="font-medium">{t(item.labelKey)}</span>
-                    </motion.button>
+                      <Link
+                        href={`/${language}${item.href}`}
+                        className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
+                          isActive 
+                            ? "bg-accent text-white shadow-md" 
+                            : "text-neutral hover:bg-gray-100 hover:text-primary"
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-gray-500"}`} />
+                        <span className="font-medium">{t(item.labelKey)}</span>
+                      </Link>
+                    </motion.div>
                   );
                 })}
               </div>
