@@ -80,7 +80,7 @@ export default function DashboardHeader() {
 
   return (
     <motion.header 
-      className="bg-white border-b border-gray-200 px-4 md:px-6 py-4 h-20 flex items-center justify-between relative gpu-accelerate"
+      className="bg-white border-b border-gray-200 px-4 md:px-6 py-4 h-20 flex items-center justify-between relative gpu-accelerate z-50"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -180,7 +180,7 @@ export default function DashboardHeader() {
                   <AnimatePresence>
                     {isLanguageOpen && (
                       <motion.div
-                        className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-neutral-light/20 overflow-hidden z-50 gpu-accelerate-opacity"
+                        className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-neutral-light/20 overflow-hidden z-[9999] gpu-accelerate-opacity"
                         initial={{ opacity: 0, y: -10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -247,13 +247,13 @@ export default function DashboardHeader() {
           {/* Notification Dropdown */}
           <AnimatePresence>
             {isNotificationOpen && (
-              <motion.div
-                className="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 z-50"
-                initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-              >
+               <motion.div
+                 className="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 z-[9999]"
+                 initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                 animate={{ opacity: 1, y: 0, scale: 1 }}
+                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                 transition={{ duration: 0.2, ease: "easeOut" }}
+               >
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-200">
                   <h3 className="font-bold text-neutral">{t("dashboard.notifications.title")}</h3>
