@@ -119,7 +119,7 @@ export default function DashboardHeader() {
               <div className="flex items-center space-x-2 md:space-x-4">
                 {/* Home Button - Hidden on small mobile */}
                 <motion.button
-                  className="hidden sm:flex items-center space-x-2 px-3 md:px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-light transition-colors duration-200 gpu-accelerate"
+                  className="hidden cursor-pointer sm:flex items-center space-x-2 px-3 md:px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-light transition-colors duration-200 gpu-accelerate"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
@@ -149,7 +149,7 @@ export default function DashboardHeader() {
                 {/* Language Selector */}
                 <div className="relative" ref={languageRef}>
                   <motion.button
-                    className="flex items-center space-x-1 md:space-x-2 px-2 md:px-3 py-2 text-neutral hover:text-primary transition-colors duration-200 rounded-lg hover:bg-neutral-light/50 gpu-accelerate"
+                    className="flex cursor-pointer items-center space-x-1 md:space-x-2 px-2 md:px-3 py-2 text-neutral hover:text-primary transition-colors duration-200 rounded-lg hover:bg-neutral-light/50 gpu-accelerate"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
@@ -190,7 +190,7 @@ export default function DashboardHeader() {
                         {languages.map((lang, index) => (
                           <motion.button
                             key={lang.code}
-                            className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-neutral-light/50 transition-colors duration-200 gpu-accelerate-opacity ${
+                            className={`w-full cursor-pointer flex items-center space-x-3 px-4 py-3 text-left hover:bg-neutral-light/50 transition-colors duration-200 gpu-accelerate-opacity ${
                               language === lang.code ? 'bg-primary/10 text-primary' : 'text-neutral'
                             }`}
                             onClick={() => handleLanguageChange(lang.code)}
@@ -228,7 +228,7 @@ export default function DashboardHeader() {
                 {/* Notifications */}
         <div className="relative" ref={notificationRef}>
           <motion.button
-            className="relative p-2 text-gray-600 hover:text-primary transition-colors duration-200 gpu-accelerate"
+            className="relative cursor-pointer p-2 text-gray-600 hover:text-primary transition-colors duration-200 gpu-accelerate"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}

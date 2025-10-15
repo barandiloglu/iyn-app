@@ -126,7 +126,7 @@ export default function Header() {
             {/* Language Selector */}
             <div className="relative" ref={languageDropdownRef}>
               <motion.button
-                className="flex items-center space-x-2 px-3 py-2 text-neutral hover:text-primary transition-colors duration-200 rounded-lg hover:bg-neutral-light/50 gpu-accelerate"
+                className="flex cursor-pointer items-center space-x-2 px-3 py-2 text-neutral hover:text-primary transition-colors duration-200 rounded-lg hover:bg-neutral-light/50 gpu-accelerate"
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -164,7 +164,7 @@ export default function Header() {
                     {languages.map((lang, index) => (
                       <motion.button
                         key={lang.code}
-                        className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-neutral-light/50 transition-colors duration-200 gpu-accelerate-opacity ${
+                        className={`w-full cursor-pointer flex items-center space-x-3 px-4 py-3 text-left hover:bg-neutral-light/50 transition-colors duration-200 gpu-accelerate-opacity ${
                           language === lang.code ? 'bg-primary/10 text-primary' : 'text-neutral'
                         }`}
                         onClick={() => {

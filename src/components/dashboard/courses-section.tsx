@@ -100,7 +100,7 @@ export default function CoursesSection() {
 
               {/* Continue Button */}
               <motion.button
-                className="bg-accent text-white px-3 md:px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors duration-200 flex items-center space-x-2 text-sm md:text-base"
+                className="bg-accent cursor-pointer text-white px-3 md:px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors duration-200 flex items-center space-x-2 text-sm md:text-base"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.2 }}

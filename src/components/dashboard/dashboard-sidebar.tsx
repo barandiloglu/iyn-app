@@ -82,7 +82,7 @@ export default function DashboardSidebar() {
             return (
               <motion.button
                 key={item.id}
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
+                className={`w-full cursor-pointer flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
                   isActive 
                     ? "bg-accent text-white shadow-md" 
                     : "text-neutral hover:bg-gray-100 hover:text-primary"
@@ -110,7 +110,7 @@ export default function DashboardSidebar() {
         transition={{ duration: 0.6, delay: 0.8 }}
       >
         <motion.button
-          className="w-full flex items-center space-x-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
+          className="w-full cursor-pointer flex items-center space-x-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
