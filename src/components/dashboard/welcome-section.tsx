@@ -59,19 +59,11 @@ export default function WelcomeSection() {
       </motion.h2>
 
       {/* Statistics Cards */}
-<<<<<<< HEAD
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         {statCards.map((card, index) => (
           <motion.div
             key={card.titleKey}
             className="bg-white border border-gray-200 rounded-lg p-3 md:p-4 text-center"
-=======
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {statCards.map((card, index) => (
-          <motion.div
-            key={card.titleKey}
-            className="bg-white border border-gray-200 rounded-lg p-4 text-center"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
@@ -88,11 +80,7 @@ export default function WelcomeSection() {
             
             {/* Title */}
             <motion.h3 
-<<<<<<< HEAD
               className="text-xs md:text-sm font-medium text-gray-600 mb-2"
-=======
-              className="text-sm font-medium text-gray-600 mb-2"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
@@ -102,11 +90,7 @@ export default function WelcomeSection() {
             
             {/* Value */}
             <motion.div
-<<<<<<< HEAD
               className={`text-2xl md:text-3xl font-bold ${card.color}`}
-=======
-              className={`text-3xl font-bold ${card.color}`}
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ 

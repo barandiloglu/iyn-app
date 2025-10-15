@@ -47,11 +47,7 @@ export default function CoursesSection() {
       </motion.h3>
 
       {/* Courses Grid */}
-<<<<<<< HEAD
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-=======
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
         {courses.map((course, index) => (
           <motion.div
             key={course.id}
@@ -72,15 +68,9 @@ export default function CoursesSection() {
             </div>
 
             {/* Content */}
-<<<<<<< HEAD
             <div className="relative p-4 md:p-6 text-white">
               <motion.h4 
                 className="text-base md:text-lg font-bold mb-3 md:mb-4"
-=======
-            <div className="relative p-6 text-white">
-              <motion.h4 
-                className="text-lg font-bold mb-4"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.2 }}
@@ -110,11 +100,7 @@ export default function CoursesSection() {
 
               {/* Continue Button */}
               <motion.button
-<<<<<<< HEAD
                 className="bg-accent text-white px-3 md:px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors duration-200 flex items-center space-x-2 text-sm md:text-base"
-=======
-                className="bg-accent text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors duration-200 flex items-center space-x-2"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.2 }}

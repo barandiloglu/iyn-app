@@ -85,11 +85,7 @@ export default function CalendarSection() {
 
       {/* Day Headers */}
       <motion.div 
-<<<<<<< HEAD
         className="grid grid-cols-7 gap-1 md:gap-2 mb-4"
-=======
-        className="grid grid-cols-7 gap-2 mb-4"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
@@ -97,11 +93,7 @@ export default function CalendarSection() {
         {dayNames.map((day, index) => (
           <motion.div
             key={day}
-<<<<<<< HEAD
             className="text-center text-xs md:text-sm font-medium text-gray-600 py-2"
-=======
-            className="text-center text-sm font-medium text-gray-600 py-2"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.4 + index * 0.05 }}
@@ -113,11 +105,7 @@ export default function CalendarSection() {
 
       {/* Calendar Grid */}
       <motion.div 
-<<<<<<< HEAD
         className="grid grid-cols-7 gap-1 md:gap-2"
-=======
-        className="grid grid-cols-7 gap-2"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.5 }}
@@ -126,11 +114,7 @@ export default function CalendarSection() {
           <motion.button
             key={day.date}
             className={`
-<<<<<<< HEAD
               aspect-square flex items-center justify-center text-xs md:text-sm font-medium rounded-lg transition-all duration-200 relative
-=======
-              aspect-square flex items-center justify-center text-sm font-medium rounded-lg transition-all duration-200 relative
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
               ${day.isSelected 
                 ? "bg-primary text-white shadow-md" 
                 : day.hasEvent 

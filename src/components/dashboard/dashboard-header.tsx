@@ -80,22 +80,14 @@ export default function DashboardHeader() {
 
   return (
     <motion.header 
-<<<<<<< HEAD
       className="bg-white border-b border-gray-200 px-4 md:px-6 py-4 h-20 flex items-center justify-between relative gpu-accelerate"
-=======
-      className="bg-white border-b border-gray-200 px-6 py-4 h-20 flex items-center justify-between relative gpu-accelerate"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       style={{ willChange: "transform" }}
     >
       {/* Logo and Title */}
-<<<<<<< HEAD
       <div className="flex items-center space-x-3 md:space-x-4 ml-12 lg:ml-0">
-=======
-      <div className="flex items-center space-x-4">
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
         <motion.div
           className="gpu-accelerate"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -113,26 +105,17 @@ export default function DashboardHeader() {
         </motion.div>
         
         <motion.div
-<<<<<<< HEAD
           className="gpu-accelerate hidden sm:block"
-=======
-          className="gpu-accelerate"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           style={{ willChange: "transform" }}
         >
-<<<<<<< HEAD
           <h1 className="text-lg md:text-xl font-bold font-header text-neutral">{t("dashboard.title")}</h1>
-=======
-          <h1 className="text-xl font-bold font-header text-neutral">{t("dashboard.title")}</h1>
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
         </motion.div>
       </div>
 
               {/* User Info and Actions */}
-<<<<<<< HEAD
               <div className="flex items-center space-x-2 md:space-x-4">
                 {/* Home Button - Hidden on small mobile */}
                 <motion.button
@@ -152,12 +135,6 @@ export default function DashboardHeader() {
                 {/* Mobile Home Button - Icon only */}
                 <motion.button
                   className="sm:hidden p-2 bg-primary text-white rounded-lg hover:bg-primary-light transition-colors duration-200 gpu-accelerate"
-=======
-              <div className="flex items-center space-x-4">
-                {/* Home Button */}
-                <motion.button
-                  className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-light transition-colors duration-200 gpu-accelerate"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
@@ -167,20 +144,12 @@ export default function DashboardHeader() {
                   style={{ willChange: "transform" }}
                 >
                   <Home className="w-4 h-4" />
-<<<<<<< HEAD
-=======
-                  <span className="text-sm font-medium">Return to Website</span>
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
                 </motion.button>
 
                 {/* Language Selector */}
                 <div className="relative" ref={languageRef}>
                   <motion.button
-<<<<<<< HEAD
                     className="flex items-center space-x-1 md:space-x-2 px-2 md:px-3 py-2 text-neutral hover:text-primary transition-colors duration-200 rounded-lg hover:bg-neutral-light/50 gpu-accelerate"
-=======
-                    className="flex items-center space-x-2 px-3 py-2 text-neutral hover:text-primary transition-colors duration-200 rounded-lg hover:bg-neutral-light/50 gpu-accelerate"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
@@ -198,11 +167,7 @@ export default function DashboardHeader() {
                         borderRadius: '2px'
                       }}
                     />
-<<<<<<< HEAD
                     <span className="hidden md:inline text-sm font-medium">{currentLanguage.name}</span>
-=======
-                    <span className="text-sm font-medium">{currentLanguage.name}</span>
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
                     <motion.div
                       animate={{ rotate: isLanguageOpen ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
@@ -343,29 +308,17 @@ export default function DashboardHeader() {
 
         {/* User Profile */}
                 <motion.div
-<<<<<<< HEAD
                   className="flex items-center space-x-2 md:space-x-3 gpu-accelerate"
-=======
-                  className="flex items-center space-x-3 gpu-accelerate"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                   style={{ willChange: "transform" }}
                 >
-<<<<<<< HEAD
           <span className="hidden md:inline text-sm font-medium text-neutral">Ayşe Yılmaz</span>
           
           {/* Avatar */}
           <motion.div
             className="w-8 h-8 md:w-10 md:h-10 bg-accent rounded-full flex items-center justify-center text-white font-bold gpu-accelerate"
-=======
-          <span className="text-sm font-medium text-neutral">Ayşe Yılmaz</span>
-          
-          {/* Avatar */}
-          <motion.div
-            className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white font-bold gpu-accelerate"
->>>>>>> b21879fc535d7ff9a6bd1b8327ec884ccd07d3d1
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             style={{ willChange: "transform" }}

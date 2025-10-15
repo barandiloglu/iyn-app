@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useLanguage } from "@/contexts/language-context";
 
 export default function WhyIYNCourses() {
@@ -9,9 +10,11 @@ export default function WhyIYNCourses() {
   const features = [
     {
       icon: (
-        <img 
-          src="/images/courses/teacher.svg" 
-          alt="Expert Trainers" 
+        <Image
+          src="/images/courses/teacher.svg"
+          alt="Expert Trainers"
+          width={64}
+          height={64}
           className="w-32 h-32"
         />
       ),
@@ -20,9 +23,11 @@ export default function WhyIYNCourses() {
     },
     {
       icon: (
-        <img 
-          src="/images/courses/study-plan.svg" 
-          alt="Personalized Study Plans" 
+        <Image
+          src="/images/courses/study-plan.svg"
+          alt="Personalized Study Plans"
+          width={64}
+          height={64}
           className="w-32 h-32"
         />
       ),
@@ -31,9 +36,11 @@ export default function WhyIYNCourses() {
     },
     {
       icon: (
-        <img 
-          src="/images/courses/consultancy.svg" 
-          alt="University Application Consultancy" 
+        <Image
+          src="/images/courses/consultancy.svg"
+          alt="University Application Consultancy"
+          width={64}
+          height={64}
           className="w-32 h-32"
         />
       ),
