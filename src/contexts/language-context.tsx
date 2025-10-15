@@ -507,6 +507,44 @@ const translations = {
     "dueDate.oct12": "12 Ekim 2025",
     "dueDate.oct18": "18 Ekim 2025",
     "dueDate.oct25": "25 Ekim 2025",
+    
+    // My Courses Page
+    "dashboard.courses.myCourses": "Kurslarım",
+    "dashboard.courses.ongoingCourses": "Devam Eden Kurslarım",
+    "dashboard.courses.recommendations": "Sana Özel Öneriler",
+    "dashboard.courses.completedCourses": "Tamamlanan Kurslar",
+    "dashboard.courses.allCourses": "Tüm Kurslar",
+    "dashboard.courses.instructor": "Eğitmen",
+    "dashboard.courses.progress": "İlerleme",
+    "dashboard.courses.nextLesson": "Sıradaki Ders",
+    "dashboard.courses.review": "İncele",
+    "dashboard.courses.successScore": "Başarı Notu",
+    "dashboard.courses.noCompletedCourses": "Henüz tamamlanan kurs bulunmuyor",
+    "dashboard.courses.enroll": "Kayıt Ol",
+    
+    // Ongoing Courses Data
+    "courses.ongoing.calculus.instructor": "Ahmet Çelik",
+    "courses.ongoing.calculus.nextLesson": "Türev Uygulamaları",
+    "courses.ongoing.calculus.description": "Bu derste, türevin maksimum ve minimum problemlerini çözmek, fonksiyonların artan/azalan aralıklarını bulmak gibi pratik uygulamalarını inceleyeceğiz.",
+    "courses.ongoing.physics.instructor": "Zeynep Kaya",
+    "courses.ongoing.physics.nextLesson": "Türev Uygulamaları",
+    "courses.ongoing.physics.description": "Bu derste, türevin maksimum ve minimum problemlerini çözmek, fonksiyonların artan/azalan aralıklarını bulmak gibi pratik uygulamalarını inceleyeceğiz.",
+    
+    // Course Recommendations Data
+    "courses.recommendations.chemistry.description": "AP Physics dersindeki başarınıza dayanarak önerilmektedir.",
+    "courses.recommendations.sat.description": "AP Calculus'taki ilerlemeniz bu kurs için harika bir temel.",
+    
+    // Completed Courses Data
+    "courses.completed.microeconomics": "AP Microeconomics",
+    "courses.completed.english": "IB English A: Literature",
+    
+    // All Courses Data - Additional titles
+    "courses.calculus.title": "AP Calculus BC",
+    "courses.physics.title": "AP Physics 1",
+    "courses.chemistry.title": "AP Chemistry",
+    "courses.biology.title": "AP Biology",
+    "courses.economics.title": "AP Microeconomics",
+    "courses.english.title": "IB English A",
   },
   en: {
     // Navigation
@@ -1000,6 +1038,44 @@ const translations = {
     "dueDate.oct12": "October 12, 2025",
     "dueDate.oct18": "October 18, 2025",
     "dueDate.oct25": "October 25, 2025",
+    
+    // My Courses Page
+    "dashboard.courses.myCourses": "My Courses",
+    "dashboard.courses.ongoingCourses": "Ongoing Courses",
+    "dashboard.courses.recommendations": "Special Recommendations",
+    "dashboard.courses.completedCourses": "Completed Courses",
+    "dashboard.courses.allCourses": "All Courses",
+    "dashboard.courses.instructor": "Instructor",
+    "dashboard.courses.progress": "Progress",
+    "dashboard.courses.nextLesson": "Next Lesson",
+    "dashboard.courses.review": "Review",
+    "dashboard.courses.successScore": "Success Score",
+    "dashboard.courses.noCompletedCourses": "No completed courses yet",
+    "dashboard.courses.enroll": "Enroll",
+    
+    // Ongoing Courses Data
+    "courses.ongoing.calculus.instructor": "Ahmet Çelik",
+    "courses.ongoing.calculus.nextLesson": "Derivative Applications",
+    "courses.ongoing.calculus.description": "In this lesson, we will examine practical applications such as solving maximum and minimum problems of derivatives, and finding increasing/decreasing intervals of functions.",
+    "courses.ongoing.physics.instructor": "Zeynep Kaya",
+    "courses.ongoing.physics.nextLesson": "Derivative Applications",
+    "courses.ongoing.physics.description": "In this lesson, we will examine practical applications such as solving maximum and minimum problems of derivatives, and finding increasing/decreasing intervals of functions.",
+    
+    // Course Recommendations Data
+    "courses.recommendations.chemistry.description": "Recommended based on your success in the AP Physics course.",
+    "courses.recommendations.sat.description": "Your progress in AP Calculus is a great foundation for this course.",
+    
+    // Completed Courses Data
+    "courses.completed.microeconomics": "AP Microeconomics",
+    "courses.completed.english": "IB English A: Literature",
+    
+    // All Courses Data - Additional titles
+    "courses.calculus.title": "AP Calculus BC",
+    "courses.physics.title": "AP Physics 1",
+    "courses.chemistry.title": "AP Chemistry",
+    "courses.biology.title": "AP Biology",
+    "courses.economics.title": "AP Microeconomics",
+    "courses.english.title": "IB English A",
   }
 };
 

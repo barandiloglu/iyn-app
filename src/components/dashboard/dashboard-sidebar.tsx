@@ -16,7 +16,7 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   { id: "home", labelKey: "dashboard.sidebar.home", icon: Home, href: "/dashboard" },
-  { id: "courses", labelKey: "dashboard.sidebar.courses", icon: BookOpen, href: "/dashboard" },
+  { id: "courses", labelKey: "dashboard.sidebar.courses", icon: BookOpen, href: "/dashboard/courses" },
   { id: "assignments", labelKey: "dashboard.sidebar.assignments", icon: FileText, href: "/dashboard/assignments" },
   { id: "exams", labelKey: "dashboard.sidebar.exams", icon: ClipboardList, href: "/dashboard/exams" },
   { id: "reports", labelKey: "dashboard.sidebar.reports", icon: BarChart3, href: "/dashboard" },
@@ -32,6 +32,7 @@ export default function DashboardSidebar() {
   const getActiveItem = () => {
     if (pathname.includes('/assignments')) return 'assignments';
     if (pathname.includes('/exams')) return 'exams';
+    if (pathname.includes('/courses')) return 'courses';
     return 'home';
   };
 
