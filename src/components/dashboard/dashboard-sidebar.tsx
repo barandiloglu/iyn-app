@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, BookOpen, FileText, ClipboardList, BarChart3, LogOut, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/language-context";
 
 interface MenuItem {
@@ -24,6 +24,24 @@ export default function DashboardSidebar() {
   const { t } = useLanguage();
   const [activeItem, setActiveItem] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node) && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    }
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <>
@@ -40,18 +58,6 @@ export default function DashboardSidebar() {
         </svg>
       </motion.button>
 
-      {/* Mobile Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-        )}
-      </AnimatePresence>
 
       {/* Sidebar - Desktop */}
       <motion.aside 
@@ -117,13 +123,14 @@ export default function DashboardSidebar() {
       {/* Mobile Sidebar */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.aside
-            className="lg:hidden fixed left-0 top-0 w-64 h-full bg-white z-50 shadow-xl"
-            initial={{ x: -264 }}
-            animate={{ x: 0 }}
-            exit={{ x: -264 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-          >
+           <motion.aside
+             ref={sidebarRef}
+             className="lg:hidden fixed left-0 top-0 w-64 h-full bg-white z-[9999] shadow-2xl"
+             initial={{ x: -264 }}
+             animate={{ x: 0 }}
+             exit={{ x: -264 }}
+             transition={{ duration: 0.3, ease: "easeOut" }}
+           >
             {/* Mobile Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <h2 className="text-lg font-bold text-neutral">Menu</h2>
