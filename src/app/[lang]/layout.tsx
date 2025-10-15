@@ -4,6 +4,7 @@ import "../globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { LanguageProvider } from "@/contexts/language-context";
+import ConditionalLayout from "@/components/conditional-layout";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -38,11 +39,13 @@ export default async function LangLayout({ children, params }: LayoutProps) {
         className={`${oswald.variable} antialiased bg-background text-neutral`}
       >
         <LanguageProvider initialLanguage={lang as "tr" | "en"}>
-          <Header />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
+          <ConditionalLayout>
+            <Header />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+          </ConditionalLayout>
         </LanguageProvider>
       </body>
     </html>

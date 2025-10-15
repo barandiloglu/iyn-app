@@ -70,15 +70,13 @@ export default function BlogPosts() {
   return (
     <section key={`blog-posts-${language}`} className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-16"
+        <motion.div style={{ willChange: 'transform, opacity' }} className="text-center mb-16 gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-6"
+          <motion.h2 style={{ willChange: 'transform, opacity' }} className="text-3xl md:text-4xl font-bold font-oswald text-gray-800 mb-6 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -87,8 +85,7 @@ export default function BlogPosts() {
             {t("blog.posts.title")}
           </motion.h2>
           
-          <motion.p 
-            className="text-lg text-gray-600 max-w-3xl mx-auto"
+          <motion.p style={{ willChange: 'transform, opacity' }} className="text-lg text-gray-600 max-w-3xl mx-auto gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -99,8 +96,7 @@ export default function BlogPosts() {
         </motion.div>
 
         {/* Featured Post */}
-        <motion.div 
-          className="mb-16"
+        <motion.div style={{ willChange: 'transform, opacity' }} className="mb-16 gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -137,8 +133,7 @@ export default function BlogPosts() {
                     </div>
                   </div>
                   
-                  <motion.button
-                    className="bg-white text-[#0349AA] font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-gray-100"
+                  <motion.button style={{ willChange: 'transform, opacity' }} className="bg-white text-[#0349AA] font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-gray-100 gpu-accelerate-opacity"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -208,8 +203,7 @@ export default function BlogPosts() {
                     </span>
                   </div>
                   
-                  <motion.button
-                    className="text-[#0349AA] font-medium hover:text-[#0091FF] transition-colors duration-200"
+                  <motion.button style={{ willChange: 'transform, opacity' }} className="text-[#0349AA] font-medium hover:text-[#0091FF] transition-colors duration-200 gpu-accelerate-opacity"
                     whileHover={{ x: 5 }}
                   >
                     {t("blog.posts.readMore")} →
@@ -221,15 +215,13 @@ export default function BlogPosts() {
         </div>
 
         {/* Load More Button */}
-        <motion.div 
-          className="text-center mt-12"
+        <motion.div style={{ willChange: 'transform, opacity' }} className="text-center mt-12 gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <motion.button
-            className="bg-gradient-to-r from-[#0349AA] to-[#0091FF] text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg"
+          <motion.button style={{ willChange: 'transform, opacity' }} className="bg-gradient-to-r from-[#0349AA] to-[#0091FF] text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg gpu-accelerate-opacity"
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0 20px 40px rgba(3, 73, 170, 0.3)"

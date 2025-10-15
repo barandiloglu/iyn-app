@@ -92,8 +92,7 @@ export default function ExtendedCountries() {
                   {t(country.description)}
                 </p>
                 
-                <motion.button
-                  className="w-full bg-[#ec8d13] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-[#d17a0f]"
+                <motion.button style={{ willChange: 'transform, opacity' }} className="w-full bg-[#ec8d13] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-[#d17a0f] gpu-accelerate-opacity"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -105,15 +104,13 @@ export default function ExtendedCountries() {
         </div>
 
         {/* Call to Action */}
-        <motion.div 
-          className="text-center mt-16"
+        <motion.div style={{ willChange: 'transform, opacity' }} className="text-center mt-16 gpu-accelerate-opacity"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <motion.h3 
-            className="text-2xl md:text-3xl font-bold font-oswald text-gray-800 mb-6"
+          <motion.h3 style={{ willChange: 'transform, opacity' }} className="text-2xl md:text-3xl font-bold font-oswald text-gray-800 mb-6 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -122,8 +119,7 @@ export default function ExtendedCountries() {
             {t("overseas.cta.title")}
           </motion.h3>
           
-          <motion.p 
-            className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto"
+          <motion.p style={{ willChange: 'transform, opacity' }} className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -138,8 +134,7 @@ export default function ExtendedCountries() {
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <motion.button 
-              className="bg-gradient-to-r from-[#ec8d13] to-[#d17a0f] text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg"
+            <motion.button style={{ willChange: 'transform, opacity' }} className="bg-gradient-to-r from-[#ec8d13] to-[#d17a0f] text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg gpu-accelerate-opacity"
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 20px 40px rgba(236, 141, 19, 0.3)"

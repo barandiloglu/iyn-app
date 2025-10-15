@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/language-context";
 import { useIsDesktop } from "@/hooks/use-media-query";
 
-export default function AboutHero() {
-  const { t } = useLanguage();
+export default function CareersHero() {
+  const { t, language } = useLanguage();
   const isDesktop = useIsDesktop();
 
   return (
-    <section className="relative bg-gradient-to-b from-[#0349AA] to-[#0091FF] text-white overflow-hidden">
+    <section key={`careers-hero-${language}`} className="relative bg-gradient-to-b from-[#0349AA] to-[#0091FF] text-white overflow-hidden">
       {/* Background decorative shapes - Desktop only for performance */}
       {isDesktop && (
         <>
@@ -54,18 +54,64 @@ export default function AboutHero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             style={{ willChange: 'transform, opacity' }}
           >
-            {t("about.hero.title")}
+            {t("careers.hero.title")}
           </motion.h1>
           
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed max-w-3xl mx-auto gpu-accelerate-opacity"
+            className="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed max-w-4xl mx-auto mb-16 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             style={{ willChange: 'transform, opacity' }}
           >
-            {t("about.hero.subtitle")}
+            {t("careers.hero.subtitle")}
           </motion.p>
+
+          {/* Stats */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto gpu-accelerate-opacity"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
+          >
+            <div className="text-center">
+              <motion.div
+                className="text-4xl font-bold mb-2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+                style={{ willChange: 'transform' }}
+              >
+                50+
+              </motion.div>
+              <p className="text-white/90">{t("careers.hero.employees")}</p>
+            </div>
+            <div className="text-center">
+              <motion.div
+                className="text-4xl font-bold mb-2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+                style={{ willChange: 'transform' }}
+              >
+                5+
+              </motion.div>
+              <p className="text-white/90">{t("careers.hero.openPositions")}</p>
+            </div>
+            <div className="text-center">
+              <motion.div
+                className="text-4xl font-bold mb-2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+                style={{ willChange: 'transform' }}
+              >
+                95%
+              </motion.div>
+              <p className="text-white/90">{t("careers.hero.satisfaction")}</p>
+            </div>
+          </motion.div>
         </div>
 
         {/* Floating elements - Desktop only for performance */}

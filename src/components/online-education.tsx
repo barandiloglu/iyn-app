@@ -16,21 +16,18 @@ export default function OnlineEducation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Text Content */}
-          <motion.div
-            className="space-y-8"
+          <motion.div style={{ willChange: 'transform, opacity' }} className="space-y-8 gpu-accelerate-opacity"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <motion.h2 
-              className="text-3xl md:text-4xl lg:text-5xl font-header font-bold text-neutral leading-tight"
+            <motion.h2 style={{ willChange: 'transform, opacity' }} className="text-3xl md:text-4xl lg:text-5xl font-header font-bold text-neutral leading-tight gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               Online Eğitim ve Sınav İmkanları ile{" "}
-              <motion.span 
-                className="text-primary"
+              <motion.span style={{ willChange: 'transform, opacity' }} className="text-primary gpu-accelerate-opacity"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -39,14 +36,12 @@ export default function OnlineEducation() {
               </motion.span>
             </motion.h2>
 
-            <motion.div 
-              className="space-y-4"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="space-y-4 gpu-accelerate-opacity"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <motion.p 
-                className="text-lg text-neutral/80 leading-relaxed"
+              <motion.p style={{ willChange: 'transform, opacity' }} className="text-lg text-neutral/80 leading-relaxed gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
@@ -54,8 +49,7 @@ export default function OnlineEducation() {
                 Standart planları unutun. Sizin potansiyelinize, hedeflerinize ve öğrenme stilinize en uygun yol haritasını birlikte çiziyoruz.
               </motion.p>
               
-              <motion.p 
-                className="text-lg text-neutral/80 leading-relaxed"
+              <motion.p style={{ willChange: 'transform, opacity' }} className="text-lg text-neutral/80 leading-relaxed gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
@@ -63,8 +57,7 @@ export default function OnlineEducation() {
                 Standart planları unutun. Sizin potansiyelinize, hedeflerinize ve öğrenme stilinize en uygun yol haritasını birlikte çiziyoruz.
               </motion.p>
               
-              <motion.p 
-                className="text-lg text-neutral/80 leading-relaxed"
+              <motion.p style={{ willChange: 'transform, opacity' }} className="text-lg text-neutral/80 leading-relaxed gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.9 }}
@@ -74,8 +67,7 @@ export default function OnlineEducation() {
             </motion.div>
 
             {/* Feature points */}
-            <motion.div 
-              className="space-y-3"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="space-y-3 gpu-accelerate-opacity"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
@@ -101,16 +93,14 @@ export default function OnlineEducation() {
           </motion.div>
 
           {/* Right Side - Image */}
-          <motion.div
-            className="relative"
+          <motion.div style={{ willChange: 'transform, opacity, filter' }} className="relative gpu-accelerate-all"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             {/* Background decorative shape - Desktop only for performance */}
             {isDesktop && (
-              <motion.div
-                className="absolute -top-10 -right-10 w-80 h-80 bg-accent/20 rounded-full blur-3xl"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="absolute -top-10 -right-10 w-80 h-80 bg-accent/20 rounded-full blur-3xl gpu-accelerate-opacity"
                 animate={{
                   scale: [1, 1.1, 1],
                   rotate: [0, 5, 0],
@@ -124,13 +114,11 @@ export default function OnlineEducation() {
             )}
 
             {/* Main image */}
-            <motion.div 
-              className="relative z-10 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-8 h-96 flex items-center justify-center overflow-hidden"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="relative z-10 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-8 h-96 flex items-center justify-center overflow-hidden gpu-accelerate-opacity"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <motion.div
-                className="relative w-80 h-80 flex items-center justify-center"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="relative w-80 h-80 flex items-center justify-center gpu-accelerate-opacity"
                 animate={{
                   y: [0, -10, 0],
                 }}
@@ -158,8 +146,7 @@ export default function OnlineEducation() {
                 </div>
                 
                 {/* Modern floating accent elements */}
-                <motion.div
-                  className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-[#ec8d13] to-[#d17a0f] rounded-full shadow-lg"
+                <motion.div style={{ willChange: 'transform, opacity' }} className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-[#ec8d13] to-[#d17a0f] rounded-full shadow-lg gpu-accelerate-opacity"
                   animate={{
                     scale: [1, 1.2, 1],
                     rotate: [0, 180, 360],
@@ -171,8 +158,7 @@ export default function OnlineEducation() {
                   }}
                 />
                 
-                <motion.div
-                  className="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-br from-[#0349AA] to-[#0091FF] rounded-full shadow-lg"
+                <motion.div style={{ willChange: 'transform, opacity' }} className="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-br from-[#0349AA] to-[#0091FF] rounded-full shadow-lg gpu-accelerate-opacity"
                   animate={{
                     scale: [1, 1.3, 1],
                     rotate: [360, 180, 0],
@@ -188,8 +174,7 @@ export default function OnlineEducation() {
             </motion.div>
 
             {/* Floating elements */}
-            <motion.div
-              className="absolute top-8 left-8 w-6 h-6 bg-accent rounded-full"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="absolute top-8 left-8 w-6 h-6 bg-accent rounded-full gpu-accelerate-opacity"
               animate={{
                 y: [0, -15, 0],
                 opacity: [0.6, 1, 0.6],
@@ -201,8 +186,7 @@ export default function OnlineEducation() {
               }}
             />
             
-            <motion.div
-              className="absolute bottom-16 right-8 w-4 h-4 bg-primary rounded-full"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="absolute bottom-16 right-8 w-4 h-4 bg-primary rounded-full gpu-accelerate-opacity"
               animate={{
                 x: [0, 10, 0],
                 opacity: [0.4, 0.8, 0.4],
@@ -215,8 +199,7 @@ export default function OnlineEducation() {
               }}
             />
             
-            <motion.div
-              className="absolute top-1/2 right-4 w-3 h-3 bg-accent rounded-full"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="absolute top-1/2 right-4 w-3 h-3 bg-accent rounded-full gpu-accelerate-opacity"
               animate={{
                 y: [0, -8, 0],
                 x: [0, 5, 0],

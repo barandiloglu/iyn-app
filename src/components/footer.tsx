@@ -55,8 +55,7 @@ export default function Footer() {
         {/* Top Section: Logo, Links, and Map */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mb-6">
           {/* Logo and Company Info */}
-          <motion.div 
-            className="lg:col-span-4"
+          <motion.div style={{ willChange: 'transform, opacity' }} className="lg:col-span-4 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -79,8 +78,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Footer Links */}
-          <motion.div 
-            className="lg:col-span-5"
+          <motion.div style={{ willChange: 'transform, opacity' }} className="lg:col-span-5 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -120,8 +118,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Map and Contact - Top Right */}
-          <motion.div 
-            className="lg:col-span-3"
+          <motion.div style={{ willChange: 'transform, opacity' }} className="lg:col-span-3 gpu-accelerate-opacity"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -167,8 +164,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright Section */}
-        <motion.div 
-          className="border-t border-white/20 pt-4"
+        <motion.div style={{ willChange: 'transform, opacity' }} className="border-t border-white/20 pt-4 gpu-accelerate-opacity"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}

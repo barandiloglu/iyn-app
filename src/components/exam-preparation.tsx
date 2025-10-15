@@ -29,8 +29,7 @@ export default function ExamPreparation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Text Content */}
-          <motion.div
-            className="space-y-8"
+          <motion.div style={{ willChange: 'transform, opacity' }} className="space-y-8 gpu-accelerate-opacity"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -47,15 +46,13 @@ export default function ExamPreparation() {
             </motion.div>
 
             {/* Main Title */}
-            <motion.h2 
-              className="text-3xl md:text-4xl lg:text-5xl font-header font-bold text-neutral leading-tight"
+            <motion.h2 style={{ willChange: 'transform, opacity' }} className="text-3xl md:text-4xl lg:text-5xl font-header font-bold text-neutral leading-tight gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               Sınavlarınızı{" "}
-              <motion.span 
-                className="text-primary"
+              <motion.span style={{ willChange: 'transform, opacity' }} className="text-primary gpu-accelerate-opacity"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -65,8 +62,7 @@ export default function ExamPreparation() {
             </motion.h2>
 
             {/* Description */}
-            <motion.p 
-              className="text-lg text-neutral/80 leading-relaxed"
+            <motion.p style={{ willChange: 'transform, opacity' }} className="text-lg text-neutral/80 leading-relaxed gpu-accelerate-opacity"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -76,8 +72,7 @@ export default function ExamPreparation() {
             </motion.p>
 
             {/* Feature List */}
-            <motion.div 
-              className="space-y-4"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="space-y-4 gpu-accelerate-opacity"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
@@ -90,8 +85,7 @@ export default function ExamPreparation() {
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                   transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
                 >
-                  <motion.div
-                    className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center"
+                  <motion.div style={{ willChange: 'transform, opacity' }} className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center gpu-accelerate-opacity"
                     whileHover={{ 
                       scale: 1.1,
                       backgroundColor: "rgba(3, 73, 170, 0.2)",
@@ -106,8 +100,7 @@ export default function ExamPreparation() {
             </motion.div>
 
             {/* CTA Button */}
-            <motion.button
-              className="group bg-gradient-to-r from-primary to-primary-light text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+            <motion.button style={{ willChange: 'transform, opacity' }} className="group bg-gradient-to-r from-primary to-primary-light text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 gpu-accelerate-opacity"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.6, delay: 1.2 }}
@@ -128,21 +121,18 @@ export default function ExamPreparation() {
           </motion.div>
 
           {/* Right Side - Image/Chart */}
-          <motion.div
-            className="relative"
+          <motion.div style={{ willChange: 'transform, opacity' }} className="relative gpu-accelerate-opacity"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             {/* Main chart container */}
-            <motion.div 
-              className="bg-gradient-to-br from-neutral-light/50 to-white rounded-2xl p-8 shadow-xl"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="bg-gradient-to-br from-neutral-light/50 to-white rounded-2xl p-8 shadow-xl gpu-accelerate-opacity"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               {/* Chart header */}
-              <motion.div
-                className="text-center mb-6"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="text-center mb-6 gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -154,8 +144,7 @@ export default function ExamPreparation() {
               </motion.div>
 
               {/* Simulated chart */}
-              <motion.div
-                className="space-y-4"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="space-y-4 gpu-accelerate-opacity"
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
@@ -191,8 +180,7 @@ export default function ExamPreparation() {
               </motion.div>
 
               {/* Performance summary */}
-              <motion.div
-                className="mt-6 p-4 bg-primary/5 rounded-lg"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="mt-6 p-4 bg-primary/5 rounded-lg gpu-accelerate-opacity"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 1.0 }}
@@ -203,8 +191,7 @@ export default function ExamPreparation() {
                 </div>
                 <div className="mt-2">
                   <div className="w-full bg-neutral-light rounded-full h-2">
-                    <motion.div
-                      className="h-2 bg-gradient-to-r from-primary to-primary-light rounded-full"
+                    <motion.div style={{ willChange: 'transform, opacity' }} className="h-2 bg-gradient-to-r from-primary to-primary-light rounded-full gpu-accelerate-opacity"
                       initial={{ width: 0 }}
                       animate={isInView ? { width: "79%" } : { width: 0 }}
                       transition={{ duration: 1, delay: 1.2 }}
@@ -215,8 +202,7 @@ export default function ExamPreparation() {
             </motion.div>
 
             {/* Floating elements */}
-            <motion.div
-              className="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full opacity-60"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full opacity-60 gpu-accelerate-opacity"
               animate={{
                 y: [0, -10, 0],
                 rotate: [0, 180, 360],
@@ -228,8 +214,7 @@ export default function ExamPreparation() {
               }}
             />
             
-            <motion.div
-              className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary rounded-full opacity-40"
+            <motion.div style={{ willChange: 'transform, opacity' }} className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary rounded-full opacity-40 gpu-accelerate-opacity"
               animate={{
                 x: [0, 10, 0],
                 opacity: [0.4, 0.8, 0.4],
