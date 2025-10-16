@@ -77,9 +77,9 @@ export default function ParentDashboardContent() {
                 <p className="text-sm text-gray-600">Student profiles</p>
               </div>
             </div>
-            <p className="text-gray-600 mb-4">
-              View your children's profiles, academic progress, and performance overview.
-            </p>
+              <p className="text-gray-600 mb-4">
+                View your children&apos;s profiles, academic progress, and performance overview.
+              </p>
             <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
               View Children
             </button>
@@ -102,7 +102,7 @@ export default function ParentDashboardContent() {
               </div>
             </div>
             <p className="text-gray-600 mb-4">
-              Monitor your children's academic progress, grades, and learning achievements.
+              Monitor your children&apos;s academic progress, grades, and learning achievements.
             </p>
             <button className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors">
               View Progress
@@ -126,7 +126,7 @@ export default function ParentDashboardContent() {
               </div>
             </div>
             <p className="text-gray-600 mb-4">
-              Track upcoming assignments, due dates, and your children's submission status.
+              Track upcoming assignments, due dates, and your children&apos;s submission status.
             </p>
             <button className="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors">
               View Assignments
@@ -150,7 +150,7 @@ export default function ParentDashboardContent() {
               </div>
             </div>
             <p className="text-gray-600 mb-4">
-              Check your children's class attendance records and school calendar events.
+              Check your children&apos;s class attendance records and school calendar events.
             </p>
             <button className="w-full bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-orange-700 transition-colors">
               View Attendance
@@ -198,7 +198,7 @@ export default function ParentDashboardContent() {
               </div>
             </div>
             <p className="text-gray-600 mb-4">
-              Access detailed reports on your children's performance, behavior, and achievements.
+              Access detailed reports on your children&apos;s performance, behavior, and achievements.
             </p>
             <button className="w-full bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">
               View Reports

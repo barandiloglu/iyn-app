@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { requireRole } from '@/lib/auth';
 import { UserRole } from '@/generated/prisma';
 import ProtectedRoute from '@/components/auth/protected-route';
 import DashboardLayout from "@/components/dashboard/dashboard-layout";

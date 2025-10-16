@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Production builds
+.next/
+out/
+build/
+
+# Generated files
+src/generated/
+scripts/
+
+# Environment files
+.env*
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# IDE files
+.vscode/
+.idea/
+
+# TypeScript
+next-env.d.ts
+*.tsbuildinfo

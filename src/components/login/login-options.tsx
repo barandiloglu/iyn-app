@@ -6,11 +6,9 @@ import { useRouter } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
 import { useAuth } from "@/contexts/auth-context";
 import { useToast } from "@/contexts/toast-context";
-import { useIsDesktop } from "@/hooks/use-media-query";
 
 export default function LoginOptions() {
   const { t, language } = useLanguage();
-  const isDesktop = useIsDesktop();
   const router = useRouter();
   const { login, isLoading } = useAuth();
   const { addToast } = useToast();
@@ -72,7 +70,7 @@ export default function LoginOptions() {
           message: result.message || 'Please check your credentials and try again.',
         });
       }
-    } catch (error) {
+    } catch {
       addToast({
         type: 'error',
         title: 'Network Error',

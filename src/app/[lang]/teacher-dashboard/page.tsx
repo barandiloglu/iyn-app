@@ -1,4 +1,3 @@
-import { requireRole } from '@/lib/auth';
 import { UserRole } from '@/generated/prisma';
 import ProtectedRoute from '@/components/auth/protected-route';
 import TeacherDashboardContent from '@/components/dashboard/teacher-dashboard-content';
