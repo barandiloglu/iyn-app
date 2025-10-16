@@ -2,15 +2,22 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
+import { useAuth } from "@/contexts/auth-context";
+import { useToast } from "@/contexts/toast-context";
 import { useIsDesktop } from "@/hooks/use-media-query";
 
 export default function LoginOptions() {
   const { t, language } = useLanguage();
   const isDesktop = useIsDesktop();
+  const router = useRouter();
+  const { login, isLoading } = useAuth();
+  const { addToast } = useToast();
   const [selectedType, setSelectedType] = useState<string>("student");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const loginTypes = [
     {
@@ -36,10 +43,44 @@ export default function LoginOptions() {
     }
   ];
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log("Login attempt:", { type: selectedType, email, password });
+    setIsSubmitting(true);
+
+    try {
+      const result = await login({
+        email,
+        password,
+        userType: selectedType as 'student' | 'teacher' | 'parent',
+      });
+
+      if (result.success && result.redirectTo) {
+        addToast({
+          type: 'success',
+          title: 'Login Successful!',
+          message: 'Redirecting to your dashboard...',
+          duration: 2000
+        });
+        // Small delay to show success toast before redirect
+        setTimeout(() => {
+          router.push(result.redirectTo || '/dashboard');
+        }, 500);
+      } else {
+        addToast({
+          type: 'error',
+          title: 'Login Failed',
+          message: result.message || 'Please check your credentials and try again.',
+        });
+      }
+    } catch (error) {
+      addToast({
+        type: 'error',
+        title: 'Network Error',
+        message: 'Please check your connection and try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -229,15 +270,23 @@ export default function LoginOptions() {
                 {/* Login Button */}
                 <motion.button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#0349AA] to-[#0091FF] text-white font-bold py-4 px-6 rounded-lg hover:from-[#0091FF] hover:to-[#0349AA] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  disabled={isSubmitting || isLoading}
+                  className="w-full bg-gradient-to-r from-[#0349AA] to-[#0091FF] text-white font-bold py-4 px-6 rounded-lg hover:from-[#0091FF] hover:to-[#0349AA] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={!isSubmitting && !isLoading ? { scale: 1.02 } : {}}
+                  whileTap={!isSubmitting && !isLoading ? { scale: 0.98 } : {}}
                 >
-                  {t("login.form.loginButton")}
+                  {isSubmitting || isLoading ? (
+                    <div className="flex items-center justify-center space-x-2">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <span>Logging in...</span>
+                    </div>
+                  ) : (
+                    t("login.form.loginButton")
+                  )}
                 </motion.button>
 
                 {/* Sign Up Link */}

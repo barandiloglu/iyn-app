@@ -1,4 +1,7 @@
 import { Metadata } from "next";
+import { requireRole } from '@/lib/auth';
+import { UserRole } from '@/generated/prisma';
+import ProtectedRoute from '@/components/auth/protected-route';
 import DashboardLayout from "@/components/dashboard/dashboard-layout";
 import DashboardHeader from "@/components/dashboard/dashboard-header";
 import DashboardSidebar from "@/components/dashboard/dashboard-sidebar";
@@ -23,24 +26,26 @@ export default async function DashboardPageLayout({ children, params }: Dashboar
   await params;
 
   return (
-    <DashboardLayout>
-      {/* Header with Language Selector - Rendered once */}
-      <DashboardHeader />
-      
-      <div className="flex h-[calc(100vh-80px)]">
-        {/* Sidebar - Hidden on mobile, visible on desktop - Rendered once */}
-        <DashboardSidebar />
+    <ProtectedRoute allowedRoles={[UserRole.STUDENT, UserRole.ADMIN]}>
+      <DashboardLayout>
+        {/* Header with Language Selector - Rendered once */}
+        <DashboardHeader />
         
-        {/* Main Content Area - Only this changes between pages */}
-        <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="flex-1 overflow-y-auto bg-[#F4F5FA] p-4 md:p-6">
-            <div className="max-w-7xl mx-auto">
-              {/* Dynamic content area - only this part changes */}
-              {children}
+        <div className="flex h-[calc(100vh-80px)]">
+          {/* Sidebar - Hidden on mobile, visible on desktop - Rendered once */}
+          <DashboardSidebar />
+          
+          {/* Main Content Area - Only this changes between pages */}
+          <div className="flex-1 flex flex-col overflow-hidden">
+            <div className="flex-1 overflow-y-auto bg-[#F4F5FA] p-4 md:p-6">
+              <div className="max-w-7xl mx-auto">
+                {/* Dynamic content area - only this part changes */}
+                {children}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </DashboardLayout>
+      </DashboardLayout>
+    </ProtectedRoute>
   );
 }

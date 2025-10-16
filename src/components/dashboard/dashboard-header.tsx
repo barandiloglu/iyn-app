@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Bell, X, Home, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/language-context";
+import { useAuth } from "@/contexts/auth-context";
+import { useToast } from "@/contexts/toast-context";
 import { useRouter } from "next/navigation";
 import ReactCountryFlag from "react-country-flag";
 
@@ -18,11 +20,26 @@ interface Notification {
 
 export default function DashboardHeader() {
   const { t, language, setLanguage } = useLanguage();
+  const { user, logout } = useAuth();
+  const { addToast } = useToast();
+  const router = useRouter();
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const notificationRef = useRef<HTMLDivElement>(null);
   const languageRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  const handleLogout = async () => {
+    await logout();
+    addToast({
+      type: 'success',
+      title: 'Logged Out Successfully',
+      message: 'You have been logged out of your account.',
+      duration: 2000
+    });
+    router.push('/login');
+  };
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -32,6 +49,9 @@ export default function DashboardHeader() {
       }
       if (languageRef.current && !languageRef.current.contains(event.target as Node)) {
         setIsLanguageOpen(false);
+      }
+      if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
+        setIsProfileOpen(false);
       }
     }
 
@@ -308,23 +328,54 @@ export default function DashboardHeader() {
 
         {/* User Profile */}
                 <motion.div
-                  className="flex items-center space-x-2 md:space-x-3 gpu-accelerate"
+                  className="relative flex items-center space-x-2 md:space-x-3 gpu-accelerate"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                   style={{ willChange: "transform" }}
                 >
-          <span className="hidden md:inline text-sm font-medium text-neutral">Ayşe Yılmaz</span>
+          <span className="hidden md:inline text-sm font-medium text-neutral">
+            {user?.firstName} {user?.lastName}
+          </span>
           
-          {/* Avatar */}
-          <motion.div
-            className="w-8 h-8 md:w-10 md:h-10 bg-accent rounded-full flex items-center justify-center text-white font-bold gpu-accelerate"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            style={{ willChange: "transform" }}
-          >
-            AY
-          </motion.div>
+          {/* Avatar with dropdown */}
+          <div className="relative" ref={profileRef}>
+            <motion.button
+              className="w-8 h-8 md:w-10 md:h-10 bg-accent rounded-full flex items-center justify-center text-white font-bold gpu-accelerate"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{ willChange: "transform" }}
+              onClick={() => setIsProfileOpen(!isProfileOpen)}
+            >
+              {user?.firstName?.[0]}{user?.lastName?.[0] || user?.email?.[0] || 'U'}
+            </motion.button>
+            
+            {/* Profile Dropdown */}
+            <AnimatePresence>
+              {isProfileOpen && (
+                <motion.div
+                  className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="px-4 py-2 border-b border-gray-100">
+                    <p className="text-sm font-medium text-gray-800">
+                      {user?.firstName} {user?.lastName}
+                    </p>
+                    <p className="text-xs text-gray-500">{user?.email}</p>
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    Logout
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </motion.div>
       </div>
     </motion.header>

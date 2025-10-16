@@ -3,9 +3,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, BookOpen, FileText, ClipboardList, BarChart3, LogOut, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/language-context";
+import { useAuth } from "@/contexts/auth-context";
+import { useToast } from "@/contexts/toast-context";
 
 interface MenuItem {
   id: string;
@@ -24,9 +26,23 @@ const menuItems: MenuItem[] = [
 
 export default function DashboardSidebar() {
   const { t, language } = useLanguage();
+  const { logout } = useAuth();
+  const { addToast } = useToast();
+  const router = useRouter();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
+
+  const handleLogout = async () => {
+    await logout();
+    addToast({
+      type: 'success',
+      title: 'Logged Out Successfully',
+      message: 'You have been logged out of your account.',
+      duration: 2000
+    });
+    router.push('/login');
+  };
 
   // Determine active item based on current pathname
   const getActiveItem = () => {
@@ -125,6 +141,7 @@ export default function DashboardSidebar() {
         transition={{ duration: 0.6, delay: 0.8 }}
       >
         <motion.button
+          onClick={handleLogout}
           className="w-full cursor-pointer flex items-center space-x-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -199,7 +216,7 @@ export default function DashboardSidebar() {
                 className="w-full flex items-center space-x-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={handleLogout}
               >
                 <LogOut className="w-5 h-5" />
                 <span className="font-medium">{t("dashboard.sidebar.logout")}</span>

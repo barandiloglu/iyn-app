@@ -4,7 +4,10 @@ import "../globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { LanguageProvider } from "@/contexts/language-context";
+import { AuthProvider } from "@/contexts/auth-context";
+import { ToastProvider } from "@/contexts/toast-context";
 import ConditionalLayout from "@/components/conditional-layout";
+import ToastContainerWrapper from "@/components/ui/toast-container";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -39,13 +42,18 @@ export default async function LangLayout({ children, params }: LayoutProps) {
         className={`${oswald.variable} antialiased bg-background text-neutral`}
       >
         <LanguageProvider initialLanguage={lang as "tr" | "en"}>
-          <ConditionalLayout>
-            <Header />
-            <main className="min-h-screen">
-              {children}
-            </main>
-            <Footer />
-          </ConditionalLayout>
+          <AuthProvider>
+            <ToastProvider>
+              <ConditionalLayout>
+                <Header />
+                <main className="min-h-screen">
+                  {children}
+                </main>
+                <Footer />
+                <ToastContainerWrapper />
+              </ConditionalLayout>
+            </ToastProvider>
+          </AuthProvider>
         </LanguageProvider>
       </body>
     </html>
