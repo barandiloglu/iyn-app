@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/auth-context';
 import { UserRole } from '@/generated/prisma';
 
@@ -14,32 +14,41 @@ interface ProtectedRouteProps {
 export default function ProtectedRoute({ 
   children, 
   allowedRoles, 
-  redirectTo = '/login' 
+  redirectTo 
 }: ProtectedRouteProps) {
   const { user, isLoading, isAuthenticated } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!isLoading) {
       if (!isAuthenticated) {
-        router.push(redirectTo);
+        // Extract language from current pathname
+        const pathSegments = pathname?.split('/').filter(Boolean) || [];
+        const language = pathSegments[0] || 'tr';
+        const loginPath = redirectTo || `/${language}/login`;
+        router.push(loginPath);
         return;
       }
 
       if (allowedRoles && user && !allowedRoles.includes(user.role)) {
+        // Extract language from current pathname
+        const pathSegments = pathname?.split('/').filter(Boolean) || [];
+        const language = pathSegments[0] || 'tr';
+        
         // Redirect to appropriate dashboard based on user role
         const roleRoutes: Record<UserRole, string> = {
-          [UserRole.STUDENT]: '/dashboard',
-          [UserRole.TEACHER]: '/teacher-dashboard',
-          [UserRole.PARENT]: '/parent-dashboard',
-          [UserRole.ADMIN]: '/admin-dashboard',
+          [UserRole.STUDENT]: `/${language}/dashboard`,
+          [UserRole.TEACHER]: `/${language}/teacher-dashboard`,
+          [UserRole.PARENT]: `/${language}/parent-dashboard`,
+          [UserRole.ADMIN]: `/${language}/admin-dashboard`,
         };
         
         router.push(roleRoutes[user.role]);
         return;
       }
     }
-  }, [isLoading, isAuthenticated, user, allowedRoles, redirectTo, router]);
+  }, [isLoading, isAuthenticated, user, allowedRoles, redirectTo, router, pathname]);
 
   if (isLoading) {
     return (

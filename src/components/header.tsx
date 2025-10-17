@@ -16,7 +16,7 @@ export default function Header() {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
-  const { user, isAuthenticated, logout, isLoading } = useAuth();
+  const { user, isAuthenticated, logout, isLoading, refreshAuth } = useAuth();
   const { addToast } = useToast();
   const router = useRouter();
   const pathname = usePathname();
@@ -74,6 +74,22 @@ export default function Header() {
       [UserRole.ADMIN]: `/${language}/admin-dashboard`,
     };
     return routeMap[userRole] || `/${language}/dashboard`;
+  };
+
+  // Handle dashboard navigation with auth refresh
+  const handleDashboardNavigation = async (dashboardRoute: string) => {
+    try {
+      // Refresh auth status before navigation
+      await refreshAuth();
+      setIsUserDropdownOpen(false);
+      // Navigate to dashboard
+      router.push(dashboardRoute);
+    } catch (error) {
+      console.error('Dashboard navigation error:', error);
+      // If auth refresh fails, still try to navigate
+      setIsUserDropdownOpen(false);
+      router.push(dashboardRoute);
+    }
   };
 
   // Handle logout
@@ -209,16 +225,15 @@ export default function Header() {
                       </div>
 
                       {/* Dashboard Link */}
-                      <motion.a
-                        href={getDashboardRoute(user.role)}
-                        className="flex items-center space-x-3 px-4 py-3 text-left hover:bg-neutral-light/50 transition-colors duration-200 gpu-accelerate-opacity text-neutral"
-                        onClick={() => setIsUserDropdownOpen(false)}
+                      <motion.button
+                        onClick={() => handleDashboardNavigation(getDashboardRoute(user.role))}
+                        className="w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-neutral-light/50 transition-colors duration-200 gpu-accelerate-opacity text-neutral"
                         whileHover={{ x: 5 }}
                         style={{ willChange: 'transform' }}
                       >
                         <LayoutDashboard size={16} />
                         <span className="text-sm font-medium">{t("nav.dashboard")}</span>
-                      </motion.a>
+                      </motion.button>
 
                       {/* Logout Button */}
                       <motion.button
@@ -473,20 +488,22 @@ export default function Header() {
                 </div>
 
                 {/* Dashboard Link */}
-                <motion.a
-                  href={getDashboardRoute(user.role)}
+                <motion.button
+                  onClick={() => {
+                    handleDashboardNavigation(getDashboardRoute(user.role));
+                    setIsMenuOpen(false);
+                  }}
                   className={`flex items-center space-x-2 text-sm font-medium transition-colors duration-0 w-full gpu-accelerate-opacity ${
                     isActive(getDashboardRoute(user.role))
                       ? "text-primary"
                       : "text-neutral hover:text-primary"
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
                   whileHover={{ x: 5 }}
                   style={{ willChange: 'transform' }}
                 >
                   <LayoutDashboard size={20} />
                   <span>{t("nav.dashboard")}</span>
-                </motion.a>
+                </motion.button>
 
                 {/* Logout Button */}
                 <motion.button

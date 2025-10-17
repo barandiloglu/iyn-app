@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
 import { useAuth } from "@/contexts/auth-context";
 import { useToast } from "@/contexts/toast-context";
-import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginOptions() {
   const { t, language } = useLanguage();
@@ -17,7 +16,6 @@ export default function LoginOptions() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
 
   const loginTypes = [
     {
@@ -232,53 +230,14 @@ export default function LoginOptions() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     {t("login.form.password")}
                   </label>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0349AA] focus:ring-2 focus:ring-[#0349AA]/20 transition-all duration-300"
-                      placeholder={t("login.form.passwordPlaceholder")}
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition-colors duration-200"
-                      aria-label={showPassword ? t("login.form.hidePassword") : t("login.form.showPassword")}
-                    >
-                      <motion.div
-                        className="relative w-5 h-5"
-                        animate={{ rotate: showPassword ? 0 : 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                      >
-                        <motion.div
-                          className="absolute inset-0"
-                          initial={{ opacity: 1, rotate: 0, scale: 1 }}
-                          animate={{
-                            opacity: showPassword ? 0 : 1,
-                            rotate: showPassword ? 90 : 0,
-                            scale: showPassword ? 0.8 : 1
-                          }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          <Eye className="w-5 h-5" />
-                        </motion.div>
-                        <motion.div
-                          className="absolute inset-0"
-                          initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
-                          animate={{
-                            opacity: showPassword ? 1 : 0,
-                            rotate: showPassword ? 0 : -90,
-                            scale: showPassword ? 1 : 0.8
-                          }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          <EyeOff className="w-5 h-5" />
-                        </motion.div>
-                      </motion.div>
-                    </button>
-                  </div>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0349AA] focus:ring-2 focus:ring-[#0349AA]/20 transition-all duration-300"
+                    placeholder={t("login.form.passwordPlaceholder")}
+                    required
+                  />
                 </motion.div>
 
                 {/* Remember Me & Forgot Password */}

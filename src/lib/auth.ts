@@ -5,7 +5,8 @@ import { redirect } from 'next/navigation';
 import { db } from './db';
 import { UserRole } from '@/generated/prisma';
 import { AuthUser, LoginCredentials, AuthResponse } from '@/types/auth';
-import { getJwtSecret, isProduction } from './config';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-key';
 const COOKIE_NAME = 'auth-token';
 
 export interface JWTPayload {
@@ -23,12 +24,12 @@ export function verifyPassword(password: string, hashedPassword: string): boolea
 }
 
 export function generateToken(payload: JWTPayload): string {
-  return jwt.sign(payload, getJwtSecret(), { expiresIn: '7d' });
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' });
 }
 
 export function verifyToken(token: string): JWTPayload | null {
   try {
-    return jwt.verify(token, getJwtSecret()) as JWTPayload;
+    return jwt.verify(token, JWT_SECRET) as JWTPayload;
   } catch {
     return null;
   }
@@ -38,18 +39,25 @@ export async function setAuthCookie(token: string) {
   const cookieStore = await cookies();
   cookieStore.set(COOKIE_NAME, token, {
     httpOnly: true,
-    secure: isProduction(),
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 7, // 7 days
     path: '/',
-    // Don't set domain for localhost, let browser handle it
-    ...(isProduction() && { domain: '.vercel.app' }),
+    // Remove domain restriction to allow cookie to work across all subdomains and paths
   });
 }
 
 export async function removeAuthCookie() {
   const cookieStore = await cookies();
   cookieStore.delete(COOKIE_NAME);
+  // Also try to clear with explicit options to ensure it's removed in production
+  cookieStore.set(COOKIE_NAME, '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 0,
+    path: '/',
+  });
 }
 
 export async function getAuthToken(): Promise<string | null> {

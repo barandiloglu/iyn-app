@@ -28,6 +28,7 @@ export interface AuthContextType {
   login: (credentials: LoginCredentials) => Promise<AuthResponse>;
   logout: () => void;
   isAuthenticated: boolean;
+  refreshAuth: () => Promise<void>;
 }
 
 export type DashboardRoute = 

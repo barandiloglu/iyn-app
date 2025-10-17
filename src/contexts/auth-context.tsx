@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { AuthContextType, AuthUser, LoginCredentials, AuthResponse } from '@/types/auth';
-import { getApiUrl } from '@/lib/config';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -18,9 +17,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
     checkAuthStatus();
   }, []);
 
+  // Re-check auth status when the component mounts (useful for navigation)
+  useEffect(() => {
+    const handleFocus = () => {
+      // Only re-check if we don't have a user to avoid unnecessary requests
+      if (!user) {
+        checkAuthStatus();
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    return () => window.removeEventListener('focus', handleFocus);
+  }, [user]);
+
   async function checkAuthStatus() {
     try {
-      const response = await fetch(getApiUrl('/auth/me'));
+      const response = await fetch('/api/auth/me');
       const data = await response.json();
       
       if (data.success && data.user) {
@@ -40,7 +52,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       setIsLoading(true);
       
-      const response = await fetch(getApiUrl('/auth/login'), {
+      const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +80,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   async function logout() {
     try {
-      await fetch(getApiUrl('/auth/logout'), {
+      await fetch('/api/auth/logout', {
         method: 'POST',
       });
     } catch (error) {
@@ -84,6 +96,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     login,
     logout,
     isAuthenticated: !!user,
+    refreshAuth: checkAuthStatus,
   };
 
   return (
