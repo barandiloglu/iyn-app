@@ -16,7 +16,7 @@ export default function Header() {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
-  const { user, isAuthenticated, logout, isLoading, refreshAuth } = useAuth();
+  const { user, isAuthenticated, logout, isLoading } = useAuth();
   const { addToast } = useToast();
   const router = useRouter();
   const pathname = usePathname();
@@ -76,20 +76,10 @@ export default function Header() {
     return routeMap[userRole] || `/${language}/dashboard`;
   };
 
-  // Handle dashboard navigation with auth refresh
-  const handleDashboardNavigation = async (dashboardRoute: string) => {
-    try {
-      // Refresh auth status before navigation
-      await refreshAuth();
-      setIsUserDropdownOpen(false);
-      // Navigate to dashboard
-      router.push(dashboardRoute);
-    } catch (error) {
-      console.error('Dashboard navigation error:', error);
-      // If auth refresh fails, still try to navigate
-      setIsUserDropdownOpen(false);
-      router.push(dashboardRoute);
-    }
+  // Handle dashboard navigation
+  const handleDashboardNavigation = (dashboardRoute: string) => {
+    setIsUserDropdownOpen(false);
+    router.push(dashboardRoute);
   };
 
   // Handle logout

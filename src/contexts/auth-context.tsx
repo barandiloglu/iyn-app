@@ -17,19 +17,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     checkAuthStatus();
   }, []);
 
-  // Re-check auth status when the component mounts (useful for navigation)
-  useEffect(() => {
-    const handleFocus = () => {
-      // Only re-check if we don't have a user to avoid unnecessary requests
-      if (!user) {
-        checkAuthStatus();
-      }
-    };
-
-    window.addEventListener('focus', handleFocus);
-    return () => window.removeEventListener('focus', handleFocus);
-  }, [user]);
-
   async function checkAuthStatus() {
     try {
       const response = await fetch('/api/auth/me');

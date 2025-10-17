@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
 import { useAuth } from "@/contexts/auth-context";
@@ -10,12 +10,14 @@ import { useToast } from "@/contexts/toast-context";
 export default function LoginOptions() {
   const { t, language } = useLanguage();
   const router = useRouter();
-  const { login, isLoading } = useAuth();
+  const { login, isLoading, isAuthenticated } = useAuth();
   const { addToast } = useToast();
   const [selectedType, setSelectedType] = useState<string>("student");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasShownSuccessToast, setHasShownSuccessToast] = useState(false);
+
 
   const loginTypes = [
     {
@@ -53,17 +55,21 @@ export default function LoginOptions() {
       });
 
       if (result.success && result.redirectTo) {
-        addToast({
-          type: 'success',
-          title: 'Login Successful!',
-          message: 'Redirecting to your dashboard...',
-          duration: 2000
-        });
-        // Small delay to show success toast before redirect
-        setTimeout(() => {
-          router.push(result.redirectTo || '/dashboard');
-        }, 500);
+        // Show success toast
+        if (!hasShownSuccessToast) {
+          setHasShownSuccessToast(true);
+          addToast({
+            type: 'success',
+            title: 'Login Successful!',
+            message: 'Redirecting to your dashboard...',
+            duration: 3000
+          });
+        }
+        
+        // Redirect immediately for faster UX
+        router.push(result.redirectTo || '/dashboard');
       } else {
+        setIsSubmitting(false);
         addToast({
           type: 'error',
           title: 'Login Failed',
@@ -71,13 +77,12 @@ export default function LoginOptions() {
         });
       }
     } catch {
+      setIsSubmitting(false);
       addToast({
         type: 'error',
         title: 'Network Error',
         message: 'Please check your connection and try again.',
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 

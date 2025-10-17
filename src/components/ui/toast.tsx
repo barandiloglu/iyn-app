@@ -101,14 +101,15 @@ interface ToastContainerProps {
 
 export default function ToastContainer({ toasts, onRemove }: ToastContainerProps) {
   return (
-    <div className="fixed top-4 right-4 z-50 space-y-2">
+    <div className="fixed top-4 right-4 z-[9999] space-y-2 pointer-events-none">
       <AnimatePresence mode="popLayout">
         {toasts.map((toast) => (
-          <ToastComponent
-            key={toast.id}
-            toast={toast}
-            onRemove={onRemove}
-          />
+          <div key={toast.id} className="pointer-events-auto">
+            <ToastComponent
+              toast={toast}
+              onRemove={onRemove}
+            />
+          </div>
         ))}
       </AnimatePresence>
     </div>
