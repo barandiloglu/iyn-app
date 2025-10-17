@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { AuthContextType, AuthUser, LoginCredentials, AuthResponse } from '@/types/auth';
+import { getApiUrl } from '@/lib/config';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -19,7 +20,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   async function checkAuthStatus() {
     try {
-      const response = await fetch('/api/auth/me');
+      const response = await fetch(getApiUrl('/auth/me'));
       const data = await response.json();
       
       if (data.success && data.user) {
@@ -39,7 +40,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       setIsLoading(true);
       
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch(getApiUrl('/auth/login'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +68,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   async function logout() {
     try {
-      await fetch('/api/auth/logout', {
+      await fetch(getApiUrl('/auth/logout'), {
         method: 'POST',
       });
     } catch (error) {

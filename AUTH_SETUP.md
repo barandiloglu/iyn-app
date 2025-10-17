@@ -13,7 +13,33 @@ This authentication system provides role-based access control for students, teac
 ## Setup Instructions
 
 ### 1. Environment Variables
-Create a `.env` file in the root directory with your database connection:
+
+#### For Local Development
+Copy the example file and configure for local development:
+
+```bash
+cp env.local.example .env.local
+```
+
+Edit `.env.local` with your local database:
+
+```env
+# Database (Replace with your local PostgreSQL URL)
+DATABASE_URL="postgresql://your-username:your-password@localhost:5432/iyn_local?schema=public"
+
+# JWT Secret (Change this to a secure random string)
+JWT_SECRET="your-local-jwt-secret-change-this-to-something-secure"
+
+# NextAuth (if needed later)
+NEXTAUTH_SECRET="your-local-nextauth-secret"
+NEXTAUTH_URL="http://localhost:3000"
+
+# Environment indicator
+NODE_ENV="development"
+```
+
+#### For Production (Vercel)
+Set these environment variables in your Vercel dashboard:
 
 ```env
 # Database (Replace with your Neon PostgreSQL URL)
@@ -24,18 +50,30 @@ JWT_SECRET="your-super-secret-jwt-key-change-this-in-production"
 
 # NextAuth (if needed later)
 NEXTAUTH_SECRET="your-nextauth-secret"
-NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_URL="https://iyn-app.vercel.app"
 ```
 
 ### 2. Database Setup
-Run the following commands to set up your database:
 
+#### Local Development
 ```bash
-# Push the schema to your database
-npx prisma db push
+# Push the schema to your local database
+npm run db:push
+
+# Generate Prisma client
+npm run db:generate
 
 # Create demo users for testing
-npx ts-node scripts/create-demo-users.ts
+npm run setup:local
+```
+
+#### Production
+```bash
+# Set production DATABASE_URL and push schema
+DATABASE_URL="your-production-url" npm run db:push
+
+# Create demo users in production
+npm run setup:production
 ```
 
 ### 3. Start the Development Server

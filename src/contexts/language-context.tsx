@@ -24,6 +24,8 @@ const translations = {
     "nav.blog": "Blog",
     "nav.careers": "Kariyer",
     "nav.login": "Giriş Yap",
+    "nav.dashboard": "Panel",
+    "nav.logout": "Çıkış Yap",
     
     // Hero Section
     "hero.title": "IYN İLE BAŞARININ FORMULU",
@@ -555,6 +557,8 @@ const translations = {
     "nav.blog": "Blog",
     "nav.careers": "Careers",
     "nav.login": "Login",
+    "nav.dashboard": "Dashboard",
+    "nav.logout": "Logout",
     
     // Hero Section
     "hero.title": "THE FORMULA FOR SUCCESS WITH IYN IS",

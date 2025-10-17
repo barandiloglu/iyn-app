@@ -3,24 +3,35 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, User, ChevronDown } from "lucide-react";
+import { Menu, X, User, ChevronDown, LayoutDashboard, LogOut } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
-import { usePathname } from "next/navigation";
+import { useAuth } from "@/contexts/auth-context";
+import { useToast } from "@/contexts/toast-context";
+import { usePathname, useRouter } from "next/navigation";
 import ReactCountryFlag from "react-country-flag";
+import { UserRole } from "@/generated/prisma";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const { user, isAuthenticated, logout, isLoading } = useAuth();
+  const { addToast } = useToast();
+  const router = useRouter();
   const pathname = usePathname();
   const languageDropdownRef = useRef<HTMLDivElement>(null);
+  const userDropdownRef = useRef<HTMLDivElement>(null);
   const homeUrl = `/${language}`;
 
-  // Close language dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (languageDropdownRef.current && !languageDropdownRef.current.contains(event.target as Node)) {
         setIsLanguageOpen(false);
+      }
+      if (userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
+        setIsUserDropdownOpen(false);
       }
     }
 
@@ -54,13 +65,37 @@ export default function Header() {
 
   const currentLanguage = languages.find(lang => lang.code === language) || languages[0];
 
+  // Function to get dashboard route based on user role
+  const getDashboardRoute = (userRole: UserRole): string => {
+    const routeMap: Record<UserRole, string> = {
+      [UserRole.STUDENT]: `/${language}/dashboard`,
+      [UserRole.TEACHER]: `/${language}/teacher-dashboard`,
+      [UserRole.PARENT]: `/${language}/parent-dashboard`,
+      [UserRole.ADMIN]: `/${language}/admin-dashboard`,
+    };
+    return routeMap[userRole] || `/${language}/dashboard`;
+  };
+
+  // Handle logout
+  const handleLogout = async () => {
+    await logout();
+    addToast({
+      type: 'success',
+      title: 'Logged Out Successfully',
+      message: 'You have been logged out of your account.',
+      duration: 2000
+    });
+    router.push(`/${language}`);
+    setIsUserDropdownOpen(false);
+  };
+
   return (
     <motion.header 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
       className="bg-white shadow-sm sticky top-0 z-50 gpu-accelerate-opacity"
-      style={{ willChange: 'opacity' }}
+      style={{ willChange: 'opacity, transform' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -68,10 +103,12 @@ export default function Header() {
           <motion.a 
             href={homeUrl}
             className="flex items-center space-x-3 gpu-accelerate"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 1.0, ease: "easeOut" }}
+            whileHover={{}}
             aria-label="IYN Education & Consultancy Home"
-            style={{ willChange: 'transform' }}
+            style={{ willChange: 'transform, opacity' }}
           >
             <Image
               src="/logo.png"
@@ -89,48 +126,145 @@ export default function Header() {
               <motion.a
                 key={item.key}
                 href={item.href}
-                className={`transition-colors duration-200 gpu-accelerate-opacity ${
+                className={`relative text-sm font-medium transition-all duration-0 gpu-accelerate-opacity group ${
                   isActive(item.href)
-                    ? "text-primary font-bold"
-                    : "text-neutral font-medium hover:text-primary"
+                    ? "text-primary"
+                    : "text-neutral hover:text-primary"
                 }`}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.3 }}
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5 + (index * 0.1), duration: 0.6, ease: "easeOut" }}
+                whileHover={{}}
                 whileTap={{ scale: 0.95 }}
                 style={{ willChange: 'transform, opacity' }}
               >
                 {t(item.key)}
+                {/* Animated Underline */}
+                <motion.div
+                  className="absolute bottom-0 left-0 h-0.5 bg-primary"
+                  initial={{ width: 0 }}
+                  animate={{ 
+                    width: isActive(item.href) ? "100%" : 0 
+                  }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                />
               </motion.a>
             ))}
           </nav>
 
           {/* Right side actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <motion.a
-              href={`/${language}/login`}
-              className={`flex items-center space-x-2 transition-colors duration-200 gpu-accelerate ${
-                isActive(`/${language}/login`)
-                  ? "text-primary font-bold"
-                  : "text-neutral hover:text-primary"
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{ willChange: 'transform' }}
-            >
-              <User size={20} />
-              <span>{t("nav.login")}</span>
-            </motion.a>
+            {isLoading ? (
+              /* Loading State */
+              <div className="flex items-center space-x-2 px-3 py-2 min-w-[120px] justify-center">
+                <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
+                <div className="w-20 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </div>
+            ) : isAuthenticated && user ? (
+              /* User Dropdown */
+              <div className="relative" ref={userDropdownRef}>
+                <motion.button
+                  className="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-neutral hover:text-primary transition-colors duration-0 rounded-lg hover:bg-neutral-light/50 gpu-accelerate min-w-[120px] justify-center"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+                  onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
+                  whileHover={{}}
+                  whileTap={{ scale: 0.95 }}
+                  style={{ willChange: 'transform, opacity' }}
+                >
+                  {/* User Avatar */}
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">
+                    {user?.firstName?.[0]}{user?.lastName?.[0] || user?.email?.[0] || 'U'}
+                  </div>
+                  <span className="text-sm font-medium">
+                    {user?.firstName} {user?.lastName}
+                  </span>
+                  <motion.div
+                    animate={{ rotate: isUserDropdownOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronDown size={16} />
+                  </motion.div>
+                </motion.button>
+
+                {/* User Dropdown Menu */}
+                <AnimatePresence>
+                  {isUserDropdownOpen && (
+                    <motion.div
+                      className="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-neutral-light/20 overflow-hidden z-50 gpu-accelerate-opacity"
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
+                      style={{ willChange: 'transform, opacity' }}
+                    >
+                      {/* User Info Header */}
+                      <div className="px-4 py-3 border-b border-gray-100">
+                        <p className="text-sm font-medium text-gray-800">
+                          {user?.firstName} {user?.lastName}
+                        </p>
+                        <p className="text-xs text-gray-500">{user?.email}</p>
+                      </div>
+
+                      {/* Dashboard Link */}
+                      <motion.a
+                        href={getDashboardRoute(user.role)}
+                        className="flex items-center space-x-3 px-4 py-3 text-left hover:bg-neutral-light/50 transition-colors duration-200 gpu-accelerate-opacity text-neutral"
+                        onClick={() => setIsUserDropdownOpen(false)}
+                        whileHover={{ x: 5 }}
+                        style={{ willChange: 'transform' }}
+                      >
+                        <LayoutDashboard size={16} />
+                        <span className="text-sm font-medium">{t("nav.dashboard")}</span>
+                      </motion.a>
+
+                      {/* Logout Button */}
+                      <motion.button
+                        onClick={handleLogout}
+                        className="w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-red-50 transition-colors duration-200 gpu-accelerate-opacity text-red-600"
+                        whileHover={{ x: 5 }}
+                        style={{ willChange: 'transform' }}
+                      >
+                        <LogOut size={16} />
+                        <span className="text-sm font-medium">{t("nav.logout")}</span>
+                      </motion.button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <motion.a
+                href={`/${language}/login`}
+                className={`flex items-center space-x-2 text-sm font-medium transition-colors duration-0 gpu-accelerate min-w-[120px] justify-center ${
+                  isActive(`/${language}/login`)
+                    ? "text-primary"
+                    : "text-neutral hover:text-primary"
+                }`}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+                whileHover={{}}
+                whileTap={{ scale: 0.95 }}
+                style={{ willChange: 'transform, opacity' }}
+              >
+                <User size={20} />
+                <span>{t("nav.login")}</span>
+              </motion.a>
+            )}
             
             {/* Language Selector */}
             <div className="relative" ref={languageDropdownRef}>
               <motion.button
-                className="flex cursor-pointer items-center space-x-2 px-3 py-2 text-neutral hover:text-primary transition-colors duration-200 rounded-lg hover:bg-neutral-light/50 gpu-accelerate"
+                className="flex cursor-pointer items-center space-x-2 px-3 py-2 text-sm font-medium text-neutral hover:text-primary transition-colors duration-0 rounded-lg hover:bg-neutral-light/50 gpu-accelerate min-w-[100px]"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.0, duration: 0.6, ease: "easeOut" }}
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{}}
                 whileTap={{ scale: 0.95 }}
-                style={{ willChange: 'transform' }}
+                style={{ willChange: 'transform, opacity' }}
               >
                 <ReactCountryFlag 
                   countryCode={currentLanguage.country} 
@@ -186,7 +320,7 @@ export default function Header() {
                             borderRadius: '2px'
                           }}
                         />
-                        <span className="font-medium">{lang.name}</span>
+                        <span className="text-sm font-medium">{lang.name}</span>
                         {language === lang.code && (
                           <motion.div
                             className="ml-auto w-2 h-2 bg-primary rounded-full"
@@ -206,9 +340,12 @@ export default function Header() {
           {/* Mobile menu button */}
           <motion.button
             className="md:hidden p-2 text-neutral gpu-accelerate"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileTap={{ scale: 0.9 }}
-            style={{ willChange: 'transform' }}
+            style={{ willChange: 'transform, opacity' }}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -230,26 +367,37 @@ export default function Header() {
               <motion.a
                 key={item.key}
                 href={item.href}
-                className={`block transition-colors duration-200 gpu-accelerate-opacity ${
+                className={`relative block text-sm font-medium transition-all duration-0 gpu-accelerate-opacity group ${
                   isActive(item.href)
-                    ? "text-primary font-bold"
-                    : "text-neutral font-medium hover:text-primary"
+                    ? "text-primary"
+                    : "text-neutral hover:text-primary"
                 }`}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
-                transition={{ delay: index * 0.1, duration: 0.3 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: isMenuOpen ? 1 : 0, scale: isMenuOpen ? 1 : 0.95 }}
+                transition={{ delay: index * 0.05, duration: 0.4, ease: "easeOut" }}
+                whileHover={{}}
                 style={{ willChange: 'transform, opacity' }}
               >
                 {t(item.key)}
+                {/* Animated Underline */}
+                <motion.div
+                  className="absolute bottom-0 left-0 h-0.5 bg-primary"
+                  initial={{ width: 0 }}
+                  animate={{ 
+                    width: isActive(item.href) ? "100%" : 0 
+                  }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                />
               </motion.a>
             ))}
             
             {/* Mobile Language Selector */}
             <motion.div
               className="space-y-2 gpu-accelerate-opacity"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
-              transition={{ delay: navigationItems.length * 0.1, duration: 0.3 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: isMenuOpen ? 1 : 0, scale: isMenuOpen ? 1 : 0.95 }}
+              transition={{ delay: navigationItems.length * 0.05, duration: 0.4, ease: "easeOut" }}
               style={{ willChange: 'transform, opacity' }}
             >
               <span className="text-neutral/60 text-sm font-medium">Language / Dil</span>
@@ -257,7 +405,7 @@ export default function Header() {
                 {languages.map((lang) => (
                   <motion.button
                     key={lang.code}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 gpu-accelerate ${
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-0 gpu-accelerate ${
                       language === lang.code 
                         ? 'bg-primary text-white' 
                         : 'bg-neutral-light text-neutral hover:bg-primary/10'
@@ -279,28 +427,99 @@ export default function Header() {
                         borderRadius: '2px'
                       }}
                     />
-                    <span>{lang.name}</span>
+                    <span className="text-sm font-medium">{lang.name}</span>
                   </motion.button>
                 ))}
               </div>
             </motion.div>
 
-            <motion.a
-              href={`/${language}/login`}
-              className={`flex items-center space-x-2 font-medium transition-colors duration-200 w-full gpu-accelerate-opacity ${
-                isActive(`/${language}/login`)
-                  ? "text-primary font-bold"
-                  : "text-neutral hover:text-primary"
-              }`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
-              transition={{ delay: (navigationItems.length + 1) * 0.1, duration: 0.3 }}
-              onClick={() => setIsMenuOpen(false)}
-              style={{ willChange: 'transform, opacity' }}
-            >
-              <User size={20} />
-              <span>{t("nav.login")}</span>
-            </motion.a>
+            {isLoading ? (
+              /* Mobile Loading State */
+              <motion.div
+                className="space-y-3 gpu-accelerate-opacity"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: isMenuOpen ? 1 : 0, scale: isMenuOpen ? 1 : 0.95 }}
+                transition={{ delay: (navigationItems.length + 1) * 0.05, duration: 0.4, ease: "easeOut" }}
+                style={{ willChange: 'transform, opacity' }}
+              >
+                <div className="flex items-center space-x-3 p-3 bg-neutral-light/20 rounded-lg">
+                  <div className="w-10 h-10 bg-gray-200 rounded-full animate-pulse"></div>
+                  <div className="space-y-2">
+                    <div className="w-24 h-4 bg-gray-200 rounded animate-pulse"></div>
+                    <div className="w-32 h-3 bg-gray-200 rounded animate-pulse"></div>
+                  </div>
+                </div>
+              </motion.div>
+            ) : isAuthenticated && user ? (
+              /* Mobile User Section */
+              <motion.div
+                className="space-y-3 gpu-accelerate-opacity"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: isMenuOpen ? 1 : 0, scale: isMenuOpen ? 1 : 0.95 }}
+                transition={{ delay: (navigationItems.length + 1) * 0.05, duration: 0.4, ease: "easeOut" }}
+                style={{ willChange: 'transform, opacity' }}
+              >
+                {/* User Info */}
+                <div className="flex items-center space-x-3 p-3 bg-neutral-light/20 rounded-lg">
+                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                    {user?.firstName?.[0]}{user?.lastName?.[0] || user?.email?.[0] || 'U'}
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-neutral">
+                      {user?.firstName} {user?.lastName}
+                    </p>
+                    <p className="text-xs text-gray-500">{user?.email}</p>
+                  </div>
+                </div>
+
+                {/* Dashboard Link */}
+                <motion.a
+                  href={getDashboardRoute(user.role)}
+                  className={`flex items-center space-x-2 text-sm font-medium transition-colors duration-0 w-full gpu-accelerate-opacity ${
+                    isActive(getDashboardRoute(user.role))
+                      ? "text-primary"
+                      : "text-neutral hover:text-primary"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                  whileHover={{ x: 5 }}
+                  style={{ willChange: 'transform' }}
+                >
+                  <LayoutDashboard size={20} />
+                  <span>{t("nav.dashboard")}</span>
+                </motion.a>
+
+                {/* Logout Button */}
+                <motion.button
+                  onClick={() => {
+                    handleLogout();
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center space-x-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors duration-0 w-full gpu-accelerate-opacity"
+                  whileHover={{ x: 5 }}
+                  style={{ willChange: 'transform' }}
+                >
+                  <LogOut size={20} />
+                  <span>{t("nav.logout")}</span>
+                </motion.button>
+              </motion.div>
+            ) : (
+              <motion.a
+                href={`/${language}/login`}
+                className={`flex items-center space-x-2 text-sm font-medium transition-colors duration-0 w-full gpu-accelerate-opacity ${
+                  isActive(`/${language}/login`)
+                    ? "text-primary"
+                    : "text-neutral hover:text-primary"
+                }`}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: isMenuOpen ? 1 : 0, scale: isMenuOpen ? 1 : 0.95 }}
+                transition={{ delay: (navigationItems.length + 1) * 0.05, duration: 0.4, ease: "easeOut" }}
+                onClick={() => setIsMenuOpen(false)}
+                style={{ willChange: 'transform, opacity' }}
+              >
+                <User size={20} />
+                <span>{t("nav.login")}</span>
+              </motion.a>
+            )}
           </nav>
         </motion.div>
       </div>

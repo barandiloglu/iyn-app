@@ -12,6 +12,8 @@
     "db:studio": "prisma studio",
     "deploy:setup": "prisma generate && prisma db push",
     "setup:production": "npx ts-node scripts/setup-production.ts",
+    "setup:local": "npx ts-node scripts/setup-local.ts",
+    "quick-start": "powershell -ExecutionPolicy Bypass -File scripts/quick-start.ps1",
     "postinstall": "prisma generate"
   },
   "dependencies": {
