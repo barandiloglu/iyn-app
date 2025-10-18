@@ -3,29 +3,31 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/contexts/language-context";
 
 export default function EducationCards() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   const cards = [
     {
       id: 1,
-      title: "KİŞİYE ÖZEL TASARLANMIŞ EĞİTİM MODELİ",
-      description: "Standart planları unutun. Sizin potansiyelinize, hedeflerinize ve öğrenme stilinize en uygun yol haritasını birlikte çiziyoruz.",
-      image: "/api/placeholder/400/300", // Placeholder for now
+      titleKey: "education.card1.title",
+      descriptionKey: "education.card1.description",
+      image: "/images/personalize-education.png",
     },
     {
       id: 2,
-      title: "KİŞİYE ÖZEL TASARLANMIŞ EĞİTİM MODELİ",
-      description: "Standart planları unutun. Sizin potansiyelinize, hedeflerinize ve öğrenme stilinize en uygun yol haritasını birlikte çiziyoruz.",
-      image: "/api/placeholder/400/300", // Placeholder for now
+      titleKey: "education.card2.title",
+      descriptionKey: "education.card2.description",
+      image: "/images/personalize-education-v2.png",
     },
     {
       id: 3,
-      title: "KİŞİYE ÖZEL TASARLANMIŞ EĞİTİM MODELİ",
-      description: "Standart planları unutun. Sizin potansiyelinize, hedeflerinize ve öğrenme stilinize en uygun yol haritasını birlikte çiziyoruz.",
-      image: "/api/placeholder/400/300", // Placeholder for now
+      titleKey: "education.card3.title",
+      descriptionKey: "education.card3.description",
+      image: "/images/personalize-education-v3.png",
     },
   ];
 
@@ -36,7 +38,7 @@ export default function EducationCards() {
           {cards.map((card, index) => (
             <motion.div
               key={card.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
               initial={{ opacity: 0, y: 100 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
               transition={{ 
@@ -50,24 +52,15 @@ export default function EducationCards() {
               }}
             >
               {/* Image Section */}
-              <motion.div style={{ willChange: 'transform, opacity' }} className="relative h-64 overflow-hidden gpu-accelerate-opacity"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="relative h-48 overflow-hidden gpu-accelerate-opacity"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <motion.div style={{ willChange: 'transform, opacity' }} className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center gpu-accelerate-opacity"
-                    animate={{
-                      rotate: [0, 360],
-                    }}
-                    transition={{
-                      duration: 20,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  >
-                    <span className="text-2xl">📚</span>
-                  </motion.div>
-                </div>
+                <img 
+                  src={card.image} 
+                  alt={t(card.titleKey)}
+                  className="w-full h-full object-cover"
+                />
                 
                 {/* Overlay gradient */}
                 <motion.div style={{ willChange: 'transform' }} className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 gpu-accelerate"
@@ -75,7 +68,7 @@ export default function EducationCards() {
               </motion.div>
 
               {/* Content Section */}
-              <motion.div style={{ willChange: 'transform, opacity' }} className="p-6 bg-gradient-to-r from-primary to-primary-light text-white relative gpu-accelerate-opacity"
+              <motion.div style={{ willChange: 'transform, opacity' }} className="p-6 bg-gradient-to-r from-primary to-primary-light text-white relative flex-1 flex flex-col gpu-accelerate-opacity"
                 whileHover={{ 
                   background: "linear-gradient(135deg, #0091FF 0%, #0349AA 100%)",
                   transition: { duration: 0.3 }
@@ -86,15 +79,15 @@ export default function EducationCards() {
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: index * 0.2 + 0.3, duration: 0.6 }}
                 >
-                  {card.title}
+                  {t(card.titleKey)}
                 </motion.h3>
                 
-                <motion.p style={{ willChange: 'transform, opacity' }} className="text-white/90 text-sm leading-relaxed gpu-accelerate-opacity"
+                <motion.p style={{ willChange: 'transform, opacity' }} className="text-white/90 text-sm leading-relaxed flex-1 gpu-accelerate-opacity"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: index * 0.2 + 0.4, duration: 0.6 }}
                 >
-                  {card.description}
+                  {t(card.descriptionKey)}
                 </motion.p>
 
                 {/* Decorative elements */}
