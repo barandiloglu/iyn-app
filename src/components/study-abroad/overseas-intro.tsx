@@ -42,11 +42,12 @@ export default function OverseasIntro() {
               viewport={{ once: true }}
             >
               <div className="relative h-96 rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-[#0349AA]/10 to-[#ec8d13]/10 flex items-center justify-center">
-                  <div className="text-6xl font-bold text-gray-400">
-                    🌍
-                  </div>
-                </div>
+                <img 
+                  src="/images/study-abroad/study-abroad.png" 
+                  alt="Study Abroad"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
               </div>
             </motion.div>
             

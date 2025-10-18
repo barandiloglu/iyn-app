@@ -80,13 +80,15 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
       <div className="relative h-48 bg-gradient-to-br from-primary/20 to-primary-light/20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-6xl opacity-20">
-            {course.titleKey.includes('calculus') && '∫'}
-            {course.titleKey.includes('physics') && '⚛'}
-            {course.titleKey.includes('chemistry') && '🧪'}
-            {course.titleKey.includes('biology') && '🧬'}
-            {course.titleKey.includes('economics') && '📈'}
-            {course.titleKey.includes('english') && '📚'}
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-[#ec8d13] tracking-wider uppercase">
+              {course.titleKey.includes('calculus') && 'AP'}
+              {course.titleKey.includes('physics') && 'AP'}
+              {course.titleKey.includes('chemistry') && 'AP'}
+              {course.titleKey.includes('biology') && 'AP'}
+              {course.titleKey.includes('economics') && 'AP'}
+              {course.titleKey.includes('english') && 'AP'}
+            </div>
           </div>
         </div>
       </div>

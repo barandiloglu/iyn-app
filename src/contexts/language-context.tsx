@@ -36,6 +36,12 @@ const translations = {
     // Education Cards
     "education.title": "KİŞİYE ÖZEL TASARLANMIŞ EĞİTİM MODELİ",
     "education.description": "Standart planları unutun. Sizin potansiyelinize, hedeflerinize ve öğrenme stilinize en uygun yol haritasını birlikte çiziyoruz.",
+    "education.card1.title": "SANA ÖZEL BAŞARI STRATEJİSİ",
+    "education.card1.description": "Tek tip planlar yerine, potansiyelini analiz ediyor; öğrenme stiline ve hedeflerine en uygun yol haritasını seninle birlikte çiziyoruz.",
+    "education.card2.title": "7/24 DİJİTAL GELİŞİM PORTALI",
+    "education.card2.description": "Ders programın, ödevlerin, sınav sonuçların ve eğitmen notların tek bir yerde. Gelişimini 7/24 takip et, hiçbir detayı kaçırma.",
+    "education.card3.title": "ULUSLARARASI SINAVLARDA UZMANLIK",
+    "education.card3.description": "AP, IB, A-Level ve SAT. Sadece konuları değil, sınavların stratejisini de öğretiyoruz. Özgün yayınlarımızla seni tam donanımlı hazırlıyoruz.",
     
     // Online Education
     "online.title": "Online Eğitim ve Sınav İmkanları ile",
@@ -415,6 +421,60 @@ const translations = {
     "login.form.noAccount": "Hesabınız yok mu?",
     "login.form.signUp": "Kayıt Olun",
     
+    // Sign-up Page
+    "signup.hero.title": "KAYIT OL",
+    "signup.hero.subtitle": "Hesap oluşturarak eğitim yolculuğunuza başlayın.",
+    "signup.form.title": "Hesap Oluştur",
+    "signup.form.subtitle": "Kişisel bilgilerinizi girin ve hesabınızı oluşturun.",
+    "signup.form.createAccount": "Hesap Oluştur",
+    "signup.form.firstName": "Ad",
+    "signup.form.firstNamePlaceholder": "Adınızı girin",
+    "signup.form.lastName": "Soyad",
+    "signup.form.lastNamePlaceholder": "Soyadınızı girin",
+    "signup.form.email": "E-posta Adresi",
+    "signup.form.emailPlaceholder": "ornek@email.com",
+    "signup.form.password": "Şifre",
+    "signup.form.passwordPlaceholder": "Şifrenizi girin",
+    "signup.form.confirmPassword": "Şifre Tekrar",
+    "signup.form.confirmPasswordPlaceholder": "Şifrenizi tekrar girin",
+    "signup.form.agreeToTerms": "Şartları ve koşulları kabul ediyorum.",
+    "signup.form.termsAndConditions": "Şartlar ve Koşullar",
+    "signup.form.createAccountButton": "Hesap Oluştur",
+    "signup.form.alreadyHaveAccount": "Zaten hesabınız var mı?",
+    "signup.form.signIn": "Giriş Yapın",
+    
+    // System Information
+    "signup.systemInfo.title": "Sistem Özellikleri",
+    "signup.systemInfo.examPackages.title": "Sınav Paketleri",
+    "signup.systemInfo.examPackages.description": "SAT, AP, IB ve diğer uluslararası sınavlara yönelik kapsamlı hazırlık paketleri.",
+    "signup.systemInfo.practiceTests.title": "Deneme Sınavları",
+    "signup.systemInfo.practiceTests.description": "Gerçek sınav koşullarını simüle eden binlerce sorudan oluşan pratik testleri.",
+    "signup.systemInfo.progressTracking.title": "İlerleme Takibi",
+    "signup.systemInfo.progressTracking.description": "Detaylı performans raporları ve kişiselleştirilmiş çalışma planları.",
+    
+    // Password Requirements
+    "signup.passwordRequirements.title": "Şifre Gereksinimleri",
+    "signup.passwordRequirements.minLength": "En az 8 karakter",
+    "signup.passwordRequirements.uppercase": "Bir büyük harf",
+    "signup.passwordRequirements.number": "Bir rakam",
+    "signup.passwordRequirements.specialChar": "Bir özel karakter",
+    
+    // Password Popup
+    "signup.passwordPopup.tip": "Güçlü bir şifre seçin",
+    
+    // Password Strength Guide
+    "signup.passwordStrength.title": "Şifre Gücü",
+    "signup.passwordStrength.weak": "Zayıf",
+    "signup.passwordStrength.fair": "Orta",
+    "signup.passwordStrength.good": "İyi",
+    "signup.passwordStrength.strong": "Güçlü",
+    
+    // Security Tips
+    "signup.securityTips.title": "Güvenlik İpuçları",
+    "signup.securityTips.tip1": "Kişisel bilgilerinizi şifrenizde kullanmayın",
+    "signup.securityTips.tip2": "Şifrenizi düzenli olarak değiştirin",
+    "signup.securityTips.tip3": "Şifrenizi kimseyle paylaşmayın",
+    
     // Dashboard
     "dashboard.title": "Ana Panel",
     "dashboard.welcome": "Hoşgeldin, Ayşe!",
@@ -571,6 +631,12 @@ const translations = {
     // Education Cards
     "education.title": "PERSONALLY DESIGNED EDUCATION MODEL",
     "education.description": "Forget standard plans. Together, we draw the most suitable roadmap for your potential, goals, and learning style.",
+    "education.card1.title": "PERSONALIZED SUCCESS STRATEGY",
+    "education.card1.description": "Instead of one-size-fits-all plans, we analyze your potential; we draw the most suitable roadmap for your learning style and goals together with you.",
+    "education.card2.title": "7/24 DIGITAL DEVELOPMENT PORTAL",
+    "education.card2.description": "Your lesson schedule, assignments, exam results, and instructor notes all in one place. Track your progress 24/7, don't miss any detail.",
+    "education.card3.title": "EXPERTISE IN INTERNATIONAL EXAMS",
+    "education.card3.description": "AP, IB, A-Level, and SAT. We teach not only the subjects but also the strategies of the exams. We prepare you fully equipped with our original publications.",
     
     // Online Education
     "online.title": "Education is Very Easy with IYN's",
@@ -949,6 +1015,60 @@ const translations = {
     "login.form.loginButton": "Login",
     "login.form.noAccount": "Don't have an account?",
     "login.form.signUp": "Sign Up",
+    
+    // Sign-up Page
+    "signup.hero.title": "SIGN UP",
+    "signup.hero.subtitle": "Start your educational journey by creating an account.",
+    "signup.form.title": "Create Account",
+    "signup.form.subtitle": "Enter your personal information and create your account.",
+    "signup.form.createAccount": "Create Account",
+    "signup.form.firstName": "First Name",
+    "signup.form.firstNamePlaceholder": "Enter your first name",
+    "signup.form.lastName": "Last Name",
+    "signup.form.lastNamePlaceholder": "Enter your last name",
+    "signup.form.email": "Email Address",
+    "signup.form.emailPlaceholder": "example@email.com",
+    "signup.form.password": "Password",
+    "signup.form.passwordPlaceholder": "Enter your password",
+    "signup.form.confirmPassword": "Confirm Password",
+    "signup.form.confirmPasswordPlaceholder": "Re-enter your password",
+    "signup.form.agreeToTerms": "I agree to the terms and conditions.",
+    "signup.form.termsAndConditions": "Terms and Conditions",
+    "signup.form.createAccountButton": "Create Account",
+    "signup.form.alreadyHaveAccount": "Already have an account?",
+    "signup.form.signIn": "Sign In",
+    
+    // System Information
+    "signup.systemInfo.title": "System Features",
+    "signup.systemInfo.examPackages.title": "Exam Packages",
+    "signup.systemInfo.examPackages.description": "Comprehensive preparation packages for SAT, AP, IB and other international exams.",
+    "signup.systemInfo.practiceTests.title": "Practice Tests",
+    "signup.systemInfo.practiceTests.description": "Practice tests with thousands of questions that simulate real exam conditions.",
+    "signup.systemInfo.progressTracking.title": "Progress Tracking",
+    "signup.systemInfo.progressTracking.description": "Detailed performance reports and personalized study plans.",
+    
+    // Password Requirements
+    "signup.passwordRequirements.title": "Password Requirements",
+    "signup.passwordRequirements.minLength": "At least 8 characters",
+    "signup.passwordRequirements.uppercase": "One uppercase letter",
+    "signup.passwordRequirements.number": "One number",
+    "signup.passwordRequirements.specialChar": "One special character",
+    
+    // Password Popup
+    "signup.passwordPopup.tip": "Choose a strong password",
+    
+    // Password Strength Guide
+    "signup.passwordStrength.title": "Password Strength",
+    "signup.passwordStrength.weak": "Weak",
+    "signup.passwordStrength.fair": "Fair",
+    "signup.passwordStrength.good": "Good",
+    "signup.passwordStrength.strong": "Strong",
+    
+    // Security Tips
+    "signup.securityTips.title": "Security Tips",
+    "signup.securityTips.tip1": "Don't use personal information in your password",
+    "signup.securityTips.tip2": "Change your password regularly",
+    "signup.securityTips.tip3": "Never share your password with anyone",
     
     // Dashboard
     "dashboard.title": "Main Panel",

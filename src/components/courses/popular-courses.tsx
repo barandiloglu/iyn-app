@@ -159,7 +159,7 @@ export default function PopularCourses() {
           {courses.map((course, index) => (
             <motion.div
               key={course.id}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ 
@@ -173,27 +173,29 @@ export default function PopularCourses() {
               {/* Course Image */}
               <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-br from-[#0349AA]/10 to-[#ec8d13]/10 flex items-center justify-center">
-                  <div className="text-4xl font-bold text-gray-400">
-                    {course.title.split(' ').map(word => word[0]).join('')}
+                  <div className="text-center">
+                    <div className="text-3xl md:text-4xl font-bold text-[#ec8d13] tracking-wider uppercase">
+                      {course.title.split(' ').map(word => word[0]).join('')}
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Course Content */}
-              <div className="space-y-4">
+              <div className="space-y-4 flex flex-col flex-1">
                 <h3 className="text-xl font-bold font-oswald text-[#ec8d13]">
                   {course.title}
                 </h3>
                 
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed flex-1">
                   {t(course.description)}
                 </p>
                 
-                <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-                  <span className="text-gray-500">
+                <div className="flex justify-between items-end pt-4 border-t border-gray-100 mt-auto">
+                  <span className="text-gray-500 text-sm">
                     {t(course.hours)}
                   </span>
-                  <span className={`font-bold ${course.levelColor}`}>
+                  <span className={`font-bold text-sm ${course.levelColor}`}>
                     {t(course.level)}
                   </span>
                 </div>

@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useLanguage } from "@/contexts/language-context";
 import { useAuth } from "@/contexts/auth-context";
 import { useToast } from "@/contexts/toast-context";
@@ -10,7 +11,7 @@ import { useToast } from "@/contexts/toast-context";
 export default function LoginOptions() {
   const { t, language } = useLanguage();
   const router = useRouter();
-  const { login, isLoading, isAuthenticated } = useAuth();
+  const { login, isLoading } = useAuth();
   const { addToast } = useToast();
   const [selectedType, setSelectedType] = useState<string>("student");
   const [email, setEmail] = useState("");
@@ -301,12 +302,12 @@ export default function LoginOptions() {
                 >
                   <p className="text-gray-600">
                     {t("login.form.noAccount")}{" "}
-                    <a
-                      href="#"
+                    <Link
+                      href="/signup"
                       className="text-[#0349AA] hover:text-[#0091FF] font-medium transition-colors duration-200"
                     >
                       {t("login.form.signUp")}
-                    </a>
+                    </Link>
                   </p>
                 </motion.div>
               </form>

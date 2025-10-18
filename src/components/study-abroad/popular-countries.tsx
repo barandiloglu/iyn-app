@@ -10,17 +10,17 @@ export default function PopularCountries() {
     {
       name: "overseas.countries.england.title",
       description: "overseas.countries.england.description",
-      image: "/countries/england.jpg"
+      image: "/images/study-abroad/england.png"
     },
     {
       name: "overseas.countries.netherlands.title",
       description: "overseas.countries.netherlands.description",
-      image: "/countries/netherlands.jpg"
+      image: "/images/study-abroad/netherlands.png"
     },
     {
       name: "overseas.countries.germany.title",
       description: "overseas.countries.germany.description",
-      image: "/countries/germany.jpg"
+      image: "/images/study-abroad/germany.png"
     }
   ];
 
@@ -54,39 +54,40 @@ export default function PopularCountries() {
           {/* Country Cards */}
           <div className="grid md:grid-cols-3 gap-8">
             {countries.map((country, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: 0.1 * index,
-                  ease: "easeOut" 
-                }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-              >
+            <motion.div
+              key={index}
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.1 * index,
+                ease: "easeOut" 
+              }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
                 {/* Country Image */}
-                <div className="relative h-48 bg-gradient-to-br from-[#0349AA]/10 to-[#ec8d13]/10">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-4xl font-bold text-gray-400">
-                      {t(country.name).charAt(0)}
-                    </div>
-                  </div>
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={country.image} 
+                    alt={t(country.name)}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
 
                 {/* Country Content */}
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 flex flex-col flex-1">
                   <h3 className="text-xl font-bold font-oswald text-[#ec8d13]">
                     {t(country.name)}
                   </h3>
                   
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed flex-1">
                     {t(country.description)}
                   </p>
                   
-                  <motion.button style={{ willChange: 'transform, opacity' }} className="w-full bg-[#ec8d13] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-[#d17a0f] gpu-accelerate-opacity"
+                  <motion.button style={{ willChange: 'transform, opacity' }} className="w-full bg-[#ec8d13] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-[#d17a0f] gpu-accelerate-opacity mt-auto"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >

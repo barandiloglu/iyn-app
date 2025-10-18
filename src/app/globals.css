@@ -46,6 +46,44 @@ html {
   font-style: normal;
 }
 
+/* GPU Acceleration classes for better performance */
+.gpu-accelerate-all {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity, filter;
+}
+
+.gpu-accelerate-opacity {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: opacity;
+}
+
+.gpu-accelerate-transform {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Opera Password Manager Blocking */
+input[data-opera-ignore="true"]::-webkit-credentials-auto-fill-button,
+input[data-opera-ignore="true"]::-webkit-strong-password-auto-fill-button {
+  display: none !important;
+}
+
+/* Hide Opera password suggestions */
+input[data-opera-password-suggestions="false"] {
+  -webkit-text-security: none;
+}
+
+/* Additional Opera blocking */
+input[data-browser-ignore="true"] {
+  -webkit-autofill: none;
+  -webkit-credentials-auto-fill: none;
+  -webkit-strong-password-auto-fill: none;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

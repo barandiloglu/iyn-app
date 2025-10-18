@@ -72,6 +72,7 @@ export default function Header() {
       [UserRole.TEACHER]: `/${language}/teacher-dashboard`,
       [UserRole.PARENT]: `/${language}/parent-dashboard`,
       [UserRole.ADMIN]: `/${language}/admin-dashboard`,
+      [UserRole.USER]: `/${language}/dashboard`, // External users for exam packages
     };
     return routeMap[userRole] || `/${language}/dashboard`;
   };
