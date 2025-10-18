@@ -181,6 +181,7 @@ export async function authenticateUser(credentials: LoginCredentials): Promise<A
       [UserRole.TEACHER]: '/teacher-dashboard',
       [UserRole.PARENT]: '/parent-dashboard',
       [UserRole.ADMIN]: '/admin-dashboard',
+      [UserRole.USER]: '/dashboard',
     };
 
     const authUser: AuthUser = {

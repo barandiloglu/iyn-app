@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, ClipboardList, Download, Eye, Play, Clock, CheckCircle, AlertCircle, XCircle } from "lucide-react";
+import { FileText, ClipboardList, Download, Eye, Play, Clock, CheckCircle, XCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
@@ -172,7 +172,7 @@ function ActionButton({ actionKey, actionType, isOverdue }: { actionKey: string;
   );
 }
 
-function AssignmentExamRow({ item, index, type }: { item: Assignment | Exam; index: number; type: "assignment" | "exam" }) {
+function AssignmentExamRow({ item, index }: { item: Assignment | Exam; index: number }) {
   const { t } = useLanguage();
   
   return (
@@ -363,7 +363,6 @@ export default function AssignmentsExamsSection() {
                         key={assignment.id} 
                         item={assignment} 
                         index={index}
-                        type="assignment"
                       />
                     ))}
                   </tbody>
@@ -420,7 +419,6 @@ export default function AssignmentsExamsSection() {
                         key={exam.id} 
                         item={exam} 
                         index={index}
-                        type="exam"
                       />
                     ))}
                   </tbody>

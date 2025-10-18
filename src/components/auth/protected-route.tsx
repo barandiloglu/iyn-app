@@ -42,6 +42,7 @@ export default function ProtectedRoute({
           [UserRole.TEACHER]: `/${language}/teacher-dashboard`,
           [UserRole.PARENT]: `/${language}/parent-dashboard`,
           [UserRole.ADMIN]: `/${language}/admin-dashboard`,
+          [UserRole.USER]: `/${language}/dashboard`,
         };
         
         router.push(roleRoutes[user.role]);

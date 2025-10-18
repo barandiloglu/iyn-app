@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 type Language = "tr" | "en";
 
@@ -1214,7 +1214,6 @@ interface LanguageProviderProps {
 
 export function LanguageProvider({ children, initialLanguage = "tr" }: LanguageProviderProps) {
   const [language, setLanguageState] = useState<Language>(initialLanguage);
-  const router = useRouter();
   const pathname = usePathname();
 
   // Sync language state with URL parameter on mount
